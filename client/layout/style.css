@@ -1,0 +1,207 @@
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+body {
+  background: #00a65a;
+  font-family: 'Lato', sans-serif;
+
+}
+
+.header {
+  font-size: 35px;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  text-align: center;
+  color: white;
+}
+
+
+
+.description {
+  font-size: 15px;
+  letter-spacing: 1px;
+  margin: -1px 0 25px;
+  text-align: center;
+  color: white;
+}
+
+.main-footer {
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+}
+
+input {
+  display: inline-block;
+  width: 300px;
+  border-radius: 5px;
+  margin-bottom: -1px;
+  padding-right: 5px;
+}
+
+/*
+.dropdown{
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown{
+  min-width: 60px !important;
+}
+
+
+.dropdown-label{
+  margin-right: 10px;
+  display:inline-block;
+}
+*/
+
+option,#dropdown{
+  color:black;
+}
+
+#setPassword {
+  height: 44px;
+  background: #004d2a;
+  font-family: inherit;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  display: block;
+  border-radius: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom:15px;
+  border:none;
+  color: white;
+}
+
+#email,#password,#confirmPassword,#npassword,#rpassword,#rConfirmPassword{
+  font-size: 14px;
+  letter-spacing: 1px;
+  line-height: 1.3em;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom:15px;
+  color:black;
+}
+
+
+#submit:hover {
+  background: #008046;
+}
+
+#mainForm,#registerForm,#set-password-form,#reset-password-form,#loginForm,#enrollmentForm{
+  width: 550px;
+  margin: 10% auto;
+  margin-bottom: 3px;
+  display: block;
+  color: white;
+  font-family: inherit;
+  font-size: 14px;
+  text-align: center;
+}
+
+a{
+  color: #362D9F;
+}
+
+.error{
+   color: #ff0000;
+   font-size: 12px;
+}
+
+input:focus {
+  outline: none;
+  outline: 2px solid #E86C8D;
+  box-shadow: 0 0 2px #E86C8D;
+}
+
+
+.button {
+  width: 25%;
+  height: 44px;
+  background: #004d2a;
+  font-family: inherit;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  display: block;
+  border-radius: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom:15px;
+  border:none;
+  color: white;
+}
+
+
+.fc-event-container {
+  padding: 5px !important;
+}
+
+/*.fc-event {
+  padding: 5px 10px;
+  border-color: #ddd;
+  background: #fff !important;
+}*/
+
+.fc-content {
+    color: #444;
+}
+h4,
+h5 {
+  margin: 0;
+  font-weight: normal;
+}
+
+h4 {
+  color: white;
+  font-size: 13px;
+  line-height: 18px;
+  white-space: normal;
+}
+
+h5 {
+  color: #888;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.guest-count {
+  margin: 5px 0;
+}
+
+p{
+  color:white;
+}
+
+p[class^="type-"] {
+  margin: 0;
+}
+
+p[class="type-Interest Groups"] {
+  color: red;
+}
+
+p[class="type-Workshops"] {
+  color: green;
+}
+
+p[class="type-Forums"] {
+  color: blue;
+}
+
+#add-announcement-form,#add-misc-post-form{
+  width:80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+textarea{
+  resize: none;
+}

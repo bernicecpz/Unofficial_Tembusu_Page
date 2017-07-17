@@ -1,0 +1,130 @@
+<!-- Users verified to be a current member of Tembusu College, set password and its status page.-->
+<!-- <template name="enrollment">
+  <div class="header">
+     <p>The Unofficial Tembusu Page</p>
+  </div>
+
+  <form id="set-password-form">
+      <div class="enrollment-form">
+
+        <input type="password" class="password-input" id="npassword" name="npassword" placeholder="Enter Your Password" required>
+        <input type="password" class="password-input" id ="confirmPassword" name="confirmPassword" placeholder="Confirm Your Password" required>
+        <input type="submit" id="setPassword" value="SET YOUR PASSWORD">
+      </div>
+  </form>
+</template>
+-->
+
+<template name="enrollment">
+  <form id="set-password-form">
+      <div class="header">
+         <p>The Unofficial Tembusu Page</p>
+      </div>
+
+      <div>
+        <label for="password">Password</label>
+        <input type="password" class="password-input" id="npassword" name="npassword" placeholder="Enter Your Password" required>
+        <br>
+        <label for="password">Confirm Password</label>
+        <input type="password" class="password-input" id ="confirmPassword" name="confirmPassword" placeholder="Confirm Your Password" required>
+
+        <input type="submit" id="setPassword" value="SET YOUR PASSWORD">
+      </div>
+  </form>
+</template>
+
+
+
+<!-- Users successfully set his password and verified his account.-->
+<template name="enrollmentSuccess">
+  <form id="enrollmentForm">
+    <div class="header">
+       <p>The Unofficial Tembusu Page</p>
+    </div>
+
+    <div class="description">
+      <p><h2>Congratulations!</h2></p>
+      <p><h2>Your email has been verified. You can start using The Unofficial Tembusu Page!</h2></p>
+    </div>
+  </form>
+</template>
+
+<!-- Token does not exist in the db that is tied to. Attempts to use past tokens, which does not exists.
+Users will still see the enrollment template, however, will go to this page due to expired token. -->
+<template name="enrollmentFail">
+  <form id="enrollmentForm">
+    <div class="header">
+       <p>The Unofficial Tembusu Page</p>
+    </div>
+
+    <div class="description">
+      <p><h2>Invalid Enrollment</h2></p>
+      <p>If you are an existing user, please <a href="/login" style="text-decoration: none"> login </a> with your NUS email.</p>
+      <p>If you have already registered but lost the previous enrollment link, click <a href="/enrollmentResend" style="text-decoration: none"> here </a> to resend the enrollment link.</p>
+      <p>Please <a href="/register" style="text-decoration: none"> register </a> your NUS email if you have not done so.</p>
+    </div>
+  </form>
+</template>
+
+<!--In the case where the user has already registered once, i.e. email is already tied to an account.
+Taking into consideration that the user may have accidentally deleted their enrollment link email from their inbox? -->
+<template name="enrollmentResend">
+  <form id="enrollmentForm">
+    <div class="header">
+       <p>The Unofficial Tembusu Page</p>
+    </div>
+
+    <div class="description">
+      <p>Please enter your NUS email address for us to resend the enrollment link.</p>
+    </div>
+
+    <input type="email" id="email" name="email" placeholder="name@u.nus.edu" class="email" required>
+    <input type="submit" class="button" id="continue" value="CONTINUE">
+    <button id="back" class="button">BACK TO HOMEPAGE</button>
+  </form>
+</template>
+
+
+<!-- First Level of Check to determine if the email is beingg registered as part of Tembusu College members-->
+<template name="preEnrollmentSuccess">
+      <div class="header">
+         <p>The Unofficial Tembusu Page</p>
+      </div>
+
+      <form id="enrollmentForm">
+        <div class="description">
+          <p><h2>An enrollment link has been sent to your email.</h2></p>
+        </div>
+
+      </form>
+</template>
+
+<template name="preEnrollmentFail">
+  <div class="header">
+     <p>The Unofficial Tembusu Page</p>
+  </div>
+
+  <form id="enrollmentForm">
+    <div class="description">
+      <p><h1>Sorry :(</h1></p>
+      <p><h2>The Unofficial Tembusu Page is exclusively for current members of Tembusu College.</h2></p>
+      <p><h3>Please contact the administrator for assistance.</h3></p>
+    </div>
+  </form>
+</template>
+
+
+<!-- Whem the user haven't verified his email and tries to register again.-->
+<template name="preEnrollmentError">
+  <div class="header">
+     <p>The Unofficial Tembusu Page</p>
+  </div>
+
+  <form id="enrollmentForm">
+    <div class="description">
+      <p><h2>Your email has already been registered. Please check your email for verification or log in if you are already an existing user.</h2></p><br>
+      <p>Please check your Junk Email folder just in case the enrollment email got delivered there instead of your inbox.</p>
+      <p><h4>If you have already registered but lost the previous enrollment link, click <a href="/enrollmentResend" style="text-decoration: none"> here </a> to resend the enrollment link.</h4></p>
+    </div>
+  </form>
+</template>

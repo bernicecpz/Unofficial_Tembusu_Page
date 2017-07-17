@@ -1,0 +1,100 @@
+<template name="home">
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+
+    <section class="content">
+
+      <div class="box-default">
+
+          <!-- Main content -->
+            <section class="content">
+
+              <div id = "announcementBox">
+                <!-- Box 1: Announcements -->
+                <div class="box box-solid box-success">
+                  <div class="box-header with-border">
+                    <h3 class="box-title"><strong>Announcments</strong></h3>
+                    <div class="box-tools pull-right">
+                      <span class="label label-primary"><a href="{{pathFor route='announcement'}}">See more @ Announcements View</a></span>
+                        <!-- <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button> -->
+                    </div><!-- /.box-tools -->
+                  </div>
+                  <div class="box-body">
+                    {{#with all_ann_items}}
+                      {{#if all_ann_items.count}}
+                          {{#each all_ann_items}}
+                            <div class="box box-default">
+                              <div class="col-xs-6 col-md-4"><strong>{{date}}</strong></div>
+                              <div class="col-xs-6"><strong>{{title}}</strong></div>
+                            </div>
+                          {{/each}}
+                      {{else}}
+                        There are currently no events. Please check again later. Thank you!
+                      {{/if}}
+                    {{/with}}
+                  </div>
+                </div>
+              </div>
+
+              <div id="recentlyAddedBox">
+                <!-- Box 2: Recently Added -->
+                <div class="box box-solid box-success">
+                  <div class="box-header with-border">
+                    <h3 class="box-title"><strong>Miscellaneous</strong></h3>
+                    <div class="box-tools pull-right">
+                        <span class="label label-primary"><a href="{{pathFor route='misc'}}">See more @ Misc. Post View</a></span>
+                    </div><!-- /.box-tools -->
+                  </div>
+                  <div class="box-body">
+                    {{#with all_misc_items}}
+                      {{#if all_misc_items.count}}
+                          {{#each all_misc_items}}
+                            <div class="box box-default">
+                              <div class="col-xs-6 col-md-4"><strong>{{date}}</strong></div>
+                              <div class="col-xs-6"><strong>{{subject}}</strong></div>
+                            </div>
+                          {{/each}}
+                      {{else}}
+                        There are currently no posts. Please check again later. Thank you!
+                      {{/if}}
+                    {{/with}}
+                  </div>
+                </div>
+              </div>
+
+              <div id="upcomingEventBox">
+                <!-- Box 3: Upcoming Events -->
+                <div class="box box-solid box-success">
+                  <div class="box-header with-border">
+                    <h3 class="box-title"><strong>Upcoming Events</strong></h3>
+                    <div class="box-tools pull-right">
+                        <span class="label label-primary"><a href="{{pathFor route='calendar'}}">See more @ Calendar</a></span>
+                    </div><!-- /.box-tools -->
+                  </div>
+                  <div  id="collapse" class="box-body">
+                    {{#with all_event_items}}
+                      {{#if all_event_items.count}}
+                          {{#each all_event_items}}
+                            <div class="box box-default">
+                              <div class="col-xs-6 col-md-4"><strong>{{start}}</strong></div>
+                              <div class="col-xs-6 col-md-4"><strong>{{title}}</strong></div>
+                            </div>
+                          {{/each}}
+                      {{else}}
+                        There are currently no events. Please check again later. Thank you!
+                      {{/if}}
+                    {{/with}}
+
+                  </div>
+                </div>
+              </div>
+
+          </section>
+
+      </div> <!-- /.box-default -->
+
+    </section> <!-- /.content -->
+  </div><!-- /.content-wrapper -->
+
+</template>
