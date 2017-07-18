@@ -55,19 +55,13 @@
             <textarea type="text" name="description" class="form-control" rows="5" value="{{event.description}}"></textarea>
           </div>
 
-          <div class="row">
-            <div class="col-xs-12 col-sm-4">
-              <label for="guests">Number of Guests</label>
-              <input type="text" name="guests" class="form-control" value="{{event.guests}}">
-            </div>
-          </div>
         </div>
         <div class="modal-footer">
           {{#if modalType 'edit'}}
             <button class="btn btn-danger pull-left delete-event">Delete Event</button>
           {{/if}}
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-          <button type="submit" class="btn btn-success">{{modalLabel.button}} Event</button>
+          <button type="submit" class="btn btn-success edit-event">{{modalLabel.button}} Event</button>
         </div>
       </form>
     </div>

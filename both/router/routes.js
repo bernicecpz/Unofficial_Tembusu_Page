@@ -108,7 +108,7 @@ Note to Self:
 Source: http://meteortips.com/second-meteor-tutorial/iron-router-part-3/
 */
 
-//When the user has logged in, then they can access the following pages 
+//When the user has logged in, then they can access the following pages
 Router.route('/home',{
     name:'home',
     template:'home',
@@ -187,6 +187,30 @@ Router.route('/misc',{
 Router.route('/calendar',{
     name:'calendar',
     template:'calendar',
+    yieldTemplates: {
+      '_appHeader': {to: 'header'},
+      '_appFooter': {to: 'footer'}
+    },
+    data: function(){
+      var currentUser = Meteor.userId();
+    },
+    onRun: function(){
+      this.next();
+    },
+    onBeforeAction: function(){
+      var currentUser = Meteor.userId();
+      if(currentUser){
+        this.layout('appLayout');
+        this.next();
+      }else{
+        this.render('main');
+      }
+    }
+});
+
+Router.route('/userProfile',{
+    name:'userProfile',
+    template:'userProfile',
     yieldTemplates: {
       '_appHeader': {to: 'header'},
       '_appFooter': {to: 'footer'}

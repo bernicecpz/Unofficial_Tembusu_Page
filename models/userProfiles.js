@@ -1,16 +1,17 @@
+//Include the library in oder to communicate with the DB
 import { Mongo } from 'meteor/mongo';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
 //Retrieve from DB and store into their respective variables
-export const Emails = new Mongo.Collection('emails');
+UserProfiles = new Mongo.Collection('UserProfiles');
 
-Emails.allow({
+UserProfiles.allow({
   insert: () => false,
   update: () => false,
   remove: () => false
 });
 
-Emails.deny({
+UserProfiles.deny({
   insert: () => true,
   update: () => true,
   remove: () => true
@@ -21,14 +22,18 @@ let EventsSchema = new SimpleSchema({
     type: String,
     label: 'The email address of the individual Tembusu member.'
   },
-  'accType':{
+  'nameOfUser':{
     type: String,
-    label: 'The type of account the individual is entitled to with certain privileges.'
+    label: 'Name of the individual Tembusu member.'
   },
-  'userStatus':{
+  'yearOfStudy':{
     type: String,
-    label: 'The status of the user, whether a student/staff'
+    label: 'Year of Study in NUS, can be Year 1 ~ 4 or Graduate'
+  },
+  'house':{
+    type: String,
+    label: 'The House the individual Tembusu member lives in.'
   },
 });
 
-Emails.attachSchema( EventsSchema );
+UserProfiles.attachSchema( EventsSchema );

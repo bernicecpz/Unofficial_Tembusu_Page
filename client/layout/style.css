@@ -6,7 +6,6 @@ html {
 body {
   background: #00a65a;
   font-family: 'Lato', sans-serif;
-
 }
 
 .header {
@@ -27,11 +26,18 @@ body {
   color: white;
 }
 
+.content{
+  display: flex;
+  min-height: 80vh;
+  flex-direction: column;
+  flex: 1;
+}
+
 .main-footer {
   right: 0;
   bottom: 0;
   left: 0;
-  text-align: center;
+  text-align: center
 }
 
 input {
@@ -106,8 +112,14 @@ option,#dropdown{
   text-align: center;
 }
 
-a{
-  color: #362D9F;
+a.link,a:visited{
+  color: white;
+  text-decoration: none;
+}
+
+a:hover{
+  color:none;
+  text-decoration: none;
 }
 
 .error{
@@ -204,4 +216,8 @@ p[class="type-Forums"] {
 
 textarea{
   resize: none;
+}
+
+#annnouncementBox,#miscPostBox{
+  color: white;
 }

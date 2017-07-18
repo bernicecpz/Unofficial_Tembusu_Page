@@ -138,17 +138,17 @@ if(Meteor.isClient){
               if (error) {
                   if (error.message === 'Token expired [403]') {
                     Session.set('alert', 'This link has expired.');
-                    Bert.alert("This link has expired.");
+                    Bert.alert("This link has expired.",'danger');
 
                     Router.go('/enrollmentFail');
                   } else {
                     //Session.set('alert', 'There was a problem setting your password.');
-                    Bert.alert("There was a problem setting your password.");
+                    Bert.alert("There was a problem setting your password.",'danger');
                     Router.go("/enrollmentFail");
                   }
               } else {
                 //  Session.set('alert', 'Your password has been changed.');  // This doesn't show. Display on next page
-                  Bert.alert("Your password has been changed.");
+                  Bert.alert("Your password has been changed.",'success');
                   Session.set('enrollAccountToken', '');
 
                   // Call done before navigating away from here
@@ -178,7 +178,7 @@ if(Meteor.isClient){
             Router.go('/preEnrollmentSuccess');
 
           }else{
-            Bert.alert("This email is not registered. Please register your NUS email if you have not done so.");
+            Bert.alert("This email is not registered. Please register your NUS email if you have not done so.",'warning');
             Router.go('/');
           }
         }

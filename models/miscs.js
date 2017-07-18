@@ -30,7 +30,7 @@ let EventsSchema = new SimpleSchema({
   },
   'createdBy':{
     type: String,
-    label:'Id of user to identify who made the miscellaneous postt'
+    label:'Email of user to identify who made the miscellaneous postt'
   }
 });
 

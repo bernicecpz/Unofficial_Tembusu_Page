@@ -104,7 +104,7 @@ if(Meteor.isClient){
               });
 
             }else{
-              Bert.alert("Please provide a valid email address.");
+              Bert.alert("Please provide a valid email address.",'warning');
               Router.go('/');
             }
           }
@@ -127,7 +127,7 @@ if(Meteor.isClient){
         function result_callback(error,element){
           if(element){
             //Means there is error
-            Bert.alert(element);
+            Bert.alert(element,'warning');
           }else{
             //Password has been validated
             //console.log("validation pass");
@@ -137,20 +137,20 @@ if(Meteor.isClient){
               if (error) {
                   if (error.message === 'Token expired [403]') {
                     Session.set('alert', 'This link has expired.');
-                    Bert.alert("This link has expired.");
+                    Bert.alert("This link has expired.",'danger');
 
 
                     Router.go('/passwordResetFail');
                   } else {
                     Session.set('alert', 'There was a problem setting your password.');
-                    Bert.alert("There was a problem setting your password. Please try again.");
+                    Bert.alert("There was a problem setting your password. Please try again.",'danger');
 
 
                     Router.go("/passwordResetFail");
                   }
               } else {
                   Session.set('alert', 'Password has been reset.');  // This doesn't show. Display on next page
-                  Bert.alert("Password has been reset.")
+                  Bert.alert("Password has been reset.",'success')
                   Session.set('resetPasswordToken', '');
 
                   // Call done before navigating away from here

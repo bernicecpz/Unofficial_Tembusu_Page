@@ -22,15 +22,14 @@ if(Meteor.isClient){
       var annContent = $('#annContent').val();
       annContent = annContent.replace(/\r?\n/g, '<br />');
 
-      //Get userId for createdBy parameter
-      var getUser = Meteor.user('getUserId');
-      var userId = getUser._id;
+      var getUser = Meteor.user();
+      var email = getUser && getUser.emails && getUser.emails[0].address;
 
       let eventItem = {
         title: $('#annTitle').val(),
         date: today,
         content: annContent,
-        createdBy: userId
+        createdBy: email
       };
 
       Meteor.call('addAnnouncement', eventItem, function(error,result){

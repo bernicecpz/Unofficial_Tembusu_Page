@@ -22,24 +22,30 @@ Enter the following commands in order :
   - __"mongoexport --host [address:port] --db [database name] --collection [collection name] --output [JSON filename]"__ (For Linux/Unix)
 + Currently, all the json files have been consolidated into the folder named, "DB import collections".
 
-
-# Note to self
+# Area(s) to note
 + Currently, the sandbox domain is used for the SMTP. As such, only authorized recipients will be able to use the sandbox domain provided by Mailgun.
   - Need to manually include the emails that are authorized
   - Users must accept invitation in order to enroll and use UTP.
 + Limited to 100 emails / hr.
-
-# Area(s) to note
 + __Jquery must be > version 1.9 but < 3. Install via meteor packages and not npm for twbs:bootstrap package.__
-+ The end date in the calendar is exclusive. As such, there is a need to select 1 more day in order to be able to display the intended date. Need to find an allDay option to apply to dynamic events, since allDay seems to can only be set in static individual events.
-+ Need to find a way to export the collections from MongoDB. [RESOLVED]
-+ __"compatability" folder containing bootstrap-less has been removed to resolve its incompatability with admin-lte.__ [RESOLVED]
 + The terms "home" and "dashboard" will be used interchangeably, since the dashboard is the user's homepage.  
-+ npm shrinkwrap is used in case of any packages that have a dependency of jquery 3, which may cause error of incompatability for  twbs:bootstrap   
++ npm shrinkwrap is used in case of any packages that have a dependency of jquery 3, which may cause error of incompatability for twbs:bootstrap.   
++ Depreciation warning for moment date format, need to change to __supported ISO8601 forms__, with anything else needing to be a __format string__.
+  - Refer here for the known formats: http://momentjs.com/docs/#/parsing/string/
 
+#TO-DOs:
++ Add in appropriate permissions that do not allow other users to make changes to other events/announcement/misc unless it's their own.**
+
++ Adjust the following HTML elements:
+  - _appHeader sidebar-menu: When another option is selected, change the li class to be active when click.
+
+# Resolved Issues
++ The end date in the calendar is exclusive. As such, there is a need to select 1 more day in order to be able to display the intended date. Need to find an allDay option to apply to dynamic events, since allDay seems to can only be set in static individual events. [RESOLVED]
++ Need to find a way to export the collections from MongoDB. [RESOLVED]
++ "compatability" folder containing bootstrap-less has been removed to resolve its incompatability with admin-lte.[RESOLVED]
 
 # Meteor packages used
-To find out about the packages version and description, use command - "meteor list"
+To find out about the packages version and description, use command - "__meteor list__"
 accounts-base                        
 accounts-password                    
 aldeed:collection2                   

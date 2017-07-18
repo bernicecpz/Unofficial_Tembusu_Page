@@ -29,6 +29,10 @@ Meteor.startup(() => {
     return MiscellaneousPosts.find({});
   });
 
+  Meteor.publish('getUserProfiles',function(){
+    return UserProfiles.find({});
+  });
+
   //Find the token linked to the enrolled user
   Meteor.publish('enrolledUser',function(token){
     return Meteor.users.find({"services.password.reset.token": token});
@@ -51,26 +55,19 @@ Meteor.startup(() => {
 
 });
 
-
-
 if(Meteor.isServer) {
   Meteor.methods({
     //Check if this email already has an user account tied to it.
     //DO NOT communicate with the users database directly, var emailEnrolled = users.findOne({email: rEmail});
 
     //Accounts
-    getUserId : function(){
-      var userId = Meteor.userId();
-      return userId;
-    },
-
     findUserByEmail : function(email){
       const userEmail = Accounts.findUserByEmail(email);
       return userEmail;
     },
 
     //Create a user tied to the email & send enrollment email to set their password
-    enrollNewUser: function(email){
+    enrollNewUser: function(email,accType){
       if(validator.isEmail(email)){
         //if(!Meteor.users.findOne()){ //Will only create a user if there are none in the users collection
         //^I.e. only 1 user inside the db, which is not correct
@@ -81,6 +78,25 @@ if(Meteor.isServer) {
 
           //Create a role for user based on their pre-assignment
           Roles.addUserToRoles(userId, accType);
+
+          //Then create an user profile for the following account
+          let userProfile = {
+            email: email,
+            nameOfUser: "New User", //Default value till user change
+            yearOfStudy: "Undergraduate", //Default value till user change
+            house: "Not Set" //Default value till user change
+          };
+
+
+          Meteor.call('addUserProfile',userProfile, function(error,result){
+            if(error){
+              console.log("Server: User Profile is not created successfully.");
+              console.log("Reason of Error: " + error.reason);
+            }else{
+              console.log("Server: User Profile is created successfully.");
+            }
+          });
+
 
           Accounts.sendEnrollmentEmail(userId);
           console.log("Server: User Creation Success");

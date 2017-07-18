@@ -1,0 +1,67 @@
+<template name ="userProfile">
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <section class="content-header">
+      <h1>
+        My User Profile
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="{{pathFor route='home'}}"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li class="active">User Profile</li>
+      </ol>
+    </section>
+
+    <section class="content">
+
+
+      <div class="box-default">
+          <!-- Main content -->
+            <section class="content">
+
+              <!-- Personal Information: Name (InputBox), Year of Study (Dropdown), House(Dropdown) -->
+              <div class="box box-default">
+                <h3 class="box-title  col-xs-6 col-md-4">About me</h3>
+                <div class="box-body">
+                  <!-- Include input box with data retrieved from collection-->
+                </div>
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-success pull-right">Update</button>
+                </div>
+              </div>
+
+
+              <!-- Change Password -->
+              <div class="box box-default">
+                <h3 class="box-title  col-xs-6 col-md-4">Change Password</h3>
+                <div class="box-body">
+                  <!-- 3 input box, with visual validation, find out how to compare password -->
+                </div>
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-success pull-right">Change Password</button>
+                </div>
+              </div>
+
+              <!-- Need to add permission for this section -->
+              <!-- My Announcements (Only for Admin-users, only can edit their own ) -->
+              <div class="box box-default">
+                <h3 class="box-title  col-xs-6 col-md-4">My Announcements</h3>
+                <div class="box-body">
+                  <!-- Generate a list of announcements created by user-->
+                </div>
+              </div>
+
+              <!-- My Misc Post (For all users, but only can edit their own) -->
+              <div class="box box-default">
+                <h3 class="box-title  col-xs-6 col-md-4">My Misc. Posts</h3>
+                <div class="box-body">
+                  <!-- Generate a list of announcements created by user-->
+                </div>
+              </div>
+
+            </section>
+
+      </div> <!-- /.box-default -->
+
+    </section> <!-- /.content -->
+  </div><!-- /.content-wrapper -->
+</template>
