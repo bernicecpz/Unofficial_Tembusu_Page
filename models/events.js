@@ -5,7 +5,7 @@ Events = new Mongo.Collection( 'events' );
 
 /* For Search feature */
 if ( Meteor.isServer ) {
-  Events._ensureIndex( { title: 1, location: 1, start: 1, end: 1, type: 1, description: 1, guests: 1 } );
+  Events._ensureIndex( { title: 1, location: 1, start: 1, end: 1, type: 1, description: 1} );
 }
 
 Events.allow({
@@ -23,32 +23,28 @@ Events.deny({
 let EventsSchema = new SimpleSchema({
   'title': {
     type: String,
-    label: 'The title of this event.'
+    label: 'The title of this event '
   },
   'location': {
     type: String,
-    label: 'The location of this event.'
+    label: 'The location of this event '
   },
   'start': {
     type: String,
-    label: 'When this event will start.'
+    label: 'Start time of thie event '
   },
   'end': {
     type: String,
-    label: 'When this event will end.'
+    label: 'End time of this event '
   },
   'type': {
     type: String,
-    label: 'What type of event is this?',
+    label: 'The type of event ',
     allowedValues: [ 'Interest Groups', 'Workshops', 'Forums' ]
   },
   'description': {
     type: String,
-    label: 'More information about this event.'
-  },
-  'guests': {
-    type: Number,
-    label: 'The number of guests expected at this event.'
+    label: 'More information about this event '
   }
 });
 
