@@ -1,3 +1,5 @@
+import { Meteor } from 'meteor/meteor';
+
 let closeModal = () => {
   $( '#add-edit-event-modal' ).modal( 'hide' );
   $( '.modal-backdrop' ).fadeOut();
@@ -37,7 +39,6 @@ Template.addEditEventModal.helpers({
 
 //Single Date Picker, standardized the format as stored inside the datebase
 Template.addEditEventModal.rendered = function(){
-
   $('#start').daterangepicker({
     singleDatePicker: true,
     showDropdowns: true,
@@ -55,27 +56,12 @@ Template.addEditEventModal.rendered = function(){
         format: 'YYYY-MM-DD hh:mm a'
     }
   });
-
-  /*$('input[name="end"]').daterangepicker({
-    singleDatePicker: true,
-    showDropdowns: true,
-    locale: {
-        format: 'YYYY-MM-DD',
-    }
-  });*/
-  /*$('input[name="end"]').daterangepicker({
-    singleDatePicker: true,
-    showDropdowns: true,
-    autoUpdateInput: false
-    }, function(chosen_date) {
-    $('input[name="end"]').val(chosen_date.format('YYYY-MM-DD'));
-  });*/
 };
-
 
 Template.addEditEventModal.events({
   'submit form' ( event, template ) {
     event.preventDefault();
+
     let eventModal = Session.get( 'eventModal' ),
         submitType = eventModal.type === 'edit' ? 'editEvent' : 'addEvent',
         eventItem  = {
@@ -84,8 +70,7 @@ Template.addEditEventModal.events({
           start: template.find( '[name="start"]' ).value,
           end: template.find( '[name="end"]' ).value,
           type: template.find( '[name="type"] option:selected' ).value,
-          description: template.find( '[name="description"]' ).value,
-          guests: parseInt( template.find( '[name="guests"]' ).value, 10 )
+          description: template.find( '[name="description"]' ).value
         };
 
     if ( submitType === 'editEvent' ) {
@@ -94,7 +79,7 @@ Template.addEditEventModal.events({
 
     Meteor.call( submitType, eventItem, ( error ) => {
       if ( error ) {
-        Bert.alert( error.reason, 'danger' ); //added package
+        Bert.alert( error.reason, 'danger' );
       } else {
         Bert.alert( `Event ${ eventModal.type }ed!`, 'success' );
         closeModal();
@@ -108,7 +93,7 @@ Template.addEditEventModal.events({
       Meteor.call( 'removeEvent', eventModal.event, ( error ) => {
         if ( error ) {
           Bert.alert( error.reason, 'danger' );
-        }else {
+        } else {
           Bert.alert( 'Event deleted!', 'success' );
           closeModal();
         }

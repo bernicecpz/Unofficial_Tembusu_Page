@@ -2,10 +2,11 @@ Meteor.methods({
   addEvent( event ) {
     check( event, {
       title: String,
+      location: String,
       start: String,
       end: String,
       type: String,
-      guests: Number
+      description: String,
     });
 
     try {
@@ -28,10 +29,11 @@ Meteor.methods({
     check( event, {
       _id: String,
       title: Match.Optional( String ),
+      location: Match.Optional( String ),
       start: String,
       end: String,
       type: Match.Optional( String ),
-      guests: Match.Optional( Number )
+      description: Match.Optional( String ),
     });
 
     try {
