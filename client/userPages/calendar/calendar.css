@@ -1,0 +1,59 @@
+.fc-event-container {
+  padding: 5px !important;
+}
+
+.fc-event {
+  padding: 5px 10px;
+  border-color: #ddd;
+  background: #96AC87 !important;
+}
+
+.fc-content {
+  color: #444;
+}
+
+h4,
+h5 {
+  margin: 0;
+  font-weight: normal;
+}
+
+h4 {
+  color: black;
+  font-size: 13px;
+  line-height: 18px;
+  white-space: normal;
+  margin-bottom: 5px;
+}
+
+h5 {
+  color: #888;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+p{
+  color:black;
+  font-size: 11px;
+}
+
+p[class="tool"] {
+  color: #CFC59F;
+  font-size: 12px;
+}
+
+p[class^="type-"] {
+  margin: 0;
+}
+
+p[class="type-Interest Groups"] {
+  color: red;
+}
+
+p[class="type-Workshops"] {
+  color: green;
+}
+
+p[class="type-Forums"] {
+  color: blue;
+}
