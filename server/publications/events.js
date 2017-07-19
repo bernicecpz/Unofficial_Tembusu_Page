@@ -13,6 +13,7 @@ Meteor.publish( 'events', function( search ) {
       $or: [
         { title: regex },
         { location: regex },
+        { type: regex },
         { description: regex }
       ]
     };
