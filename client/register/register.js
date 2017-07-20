@@ -20,7 +20,7 @@ var option; //For the dropdown menu
       },
 
       options: function(){
-        return ["student","staff"]
+        return ["student","staff"];
       },
 
     });

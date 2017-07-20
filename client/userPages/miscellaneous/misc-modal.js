@@ -22,15 +22,21 @@ if(Meteor.isClient){
       var miscContent = $('#miscContent').val();
       miscContent = miscContent.replace(/\r?\n/g, '<br />');
 
-      //Get userId for createdBy parameter
+      /*
+      //Get Email tied to current user
       var getUser = Meteor.user();
       var email = getUser && getUser.emails && getUser.emails[0].address;
+      */
+
+      //Get userId for createdBy parameter
+      var getUser = Meteor.user('getUserId');
+      var userId = getUser._id;
 
       let eventItem = {
         subject: $('#miscTitle').val(),
         date: today,
         content: miscContent,
-        createdBy: email
+        createdBy: userId
       };
 
       Meteor.call('addMiscPost', eventItem, function(error,result){

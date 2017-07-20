@@ -55,7 +55,7 @@ AdminUserRole.allow('announcements.remove',function(userId, doc, fields, modifie
 });
 
 
-AdminUserRole.deny('announcements.update',function(userId, doc, fields, modifier){
+AdminUserRole.deny('announcements.updateId',function(userId, doc, fields, modifier){
   return !_.contains(fields, 'userId'); // Can't update userId field.
 });
 

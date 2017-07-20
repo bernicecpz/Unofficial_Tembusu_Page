@@ -17,6 +17,7 @@ Enter the following commands in order :
   - To know which database you are using, enter "db" into the database. "meteor" is the default database.  
 
 # Backing up the database steps
++ Always export emails, UserProfiles and users
 + To export existing collection, use the following command:
   - __"mongoexport --host=[address:port] /d [database name] /c [collection name] /o [JSON filename]"__ (For Windows)
   - __"mongoexport --host [address:port] --db [database name] --collection [collection name] --output [JSON filename]"__ (For Linux/Unix)
@@ -33,7 +34,7 @@ Enter the following commands in order :
 + Depreciation warning for moment date format, need to change to __supported ISO8601 forms__, with anything else needing to be a __format string__.
   - Refer here for the known formats: http://momentjs.com/docs/#/parsing/string/
 
-#TO-DOs:
+# TO-DOs:
 + Add in appropriate permissions that do not allow other users to make changes to other events/announcement/misc unless it's their own.**
 
 + Adjust the following HTML elements:
@@ -45,7 +46,7 @@ Enter the following commands in order :
 + "compatability" folder containing bootstrap-less has been removed to resolve its incompatability with admin-lte.[RESOLVED]
 
 # Meteor packages used
-To find out about the packages version and description, use command - "__meteor list__"
+To find out about the packages version and description, use command - "__meteor list__"  
 accounts-base                        
 accounts-password                    
 aldeed:collection2                   

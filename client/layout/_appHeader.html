@@ -37,19 +37,19 @@
 
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
+
               <li class="user-header">
                   {{#with getUserProfile}}
-                <p>
-                  <!-- Will be replaced with name, yearOfStudy, House when userProfile Page is up.-->
+                        <p>
                           {{nameOfUser}}
                           <small> {{yearOfStudy}}, {{house}} </small>
-                </p>
-                {{/with}}
+                        </p>
+                  {{/with}}
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="userProfile" class="btn btn-default btn-flat">Profile</a>
+                  <a href="/userprofile" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
                   <a href="#" class="logout btn btn-default btn-flat">Sign out</a>
@@ -74,7 +74,7 @@
         </div>
         <div class="pull-left info">
           {{#with getUserProfile}}
-            <p><a href="/userProfile"> {{nameOfUser}}</a></p>
+            <p><a href="/userprofile"> {{nameOfUser}}</a></p>
           {{/with}}
           <!-- Status -->
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
@@ -99,6 +99,8 @@
         <!-- Optionally, you can add icons to the links -->
         <li><a href="/home"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
         <li><a href="/calendar"><i class="glyphicon glyphicon-calendar"></i> <span>Calendar</span></a></li>
+        <li><a href="/announcement"><i class="glyphicon glyphicon-bullhorn"></i> <span>Announcements</span></a></li>
+        <li><a href="/misc"><i class="fa fa-comments"></i> <span>Miscellaneous</span></a></li>
         <li><a href="/search"><i class="glyphicon glyphicon-search"></i> <span>Search</span></a></li>
         <!-- <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>

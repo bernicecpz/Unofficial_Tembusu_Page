@@ -208,9 +208,9 @@ Router.route('/calendar',{
     }
 });
 
-Router.route('/userProfile',{
-    name:'userProfile',
-    template:'userProfile',
+Router.route('/userprofile',{
+    name:'userprofile',
+    template:'userprofile',
     yieldTemplates: {
       '_appHeader': {to: 'header'},
       '_appFooter': {to: 'footer'}

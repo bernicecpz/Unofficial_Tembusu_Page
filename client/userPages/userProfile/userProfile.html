@@ -1,4 +1,4 @@
-<template name ="userProfile">
+<template name ="userprofile">
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <section class="content-header">
@@ -17,47 +17,134 @@
       <div class="box-default">
           <!-- Main content -->
             <section class="content">
+              <div id="list">
+                    <!-- Personal Information: Name (InputBox), Year of Study (Dropdown), House(Dropdown) -->
+                    <div class="box box-widget">
+                      <div class="container-fluid">
+                            <div class="box-header with-border">
+                              <div class="title-block">
+                                   <h3>About Me</h3>
+                              </div>
+                            </div>
+                            <form id="aboutMe-form">
+                                  <div class="box-body">
+                                      <table>
+                                        <tr>
+                                          <td><label for = "name">Name</label></td>
+                                          {{#with getUserProfile}}
+                                          <td><input type="text" name="userName" id="userName" placeholder="Enter Your Name" value='{{nameOfUser}}' required></td>
+                                          {{/with}}
+                                        </tr>
+                                        <tr>
+                                          <td><label for = "year of study">Year of Study</label></td>
+                                          <td>
+                                            {{#if equals yearOfStudy "Not Set"}}
+                                              <select id="dropdown-yos" name="dropdown" required>
+                                                  <option disabled="disabled" selected="selected">Please Select</option>
+                                                  {{#each yearOfStudyOptions}}
+                                                    <option name="option" value="{{this}}">{{this}}</option>
+                                                  {{/each}}
+                                              </select>
+                                            {{else}}
+                                              <select id="dropdown-yos" name="dropdown" required>
+                                                  {{#with getUserProfile}}
+                                                    <option disabled="disabled" selected="selected">{{yearOfStudy}}</option>
+                                                  {{/with}}
 
-              <!-- Personal Information: Name (InputBox), Year of Study (Dropdown), House(Dropdown) -->
-              <div class="box box-default">
-                <h3 class="box-title  col-xs-6 col-md-4">About me</h3>
-                <div class="box-body">
-                  <!-- Include input box with data retrieved from collection-->
-                </div>
-                <div class="box-footer">
-                    <button type="submit" class="btn btn-success pull-right">Update</button>
-                </div>
+                                                  <option disabled="disabled" selected="selected">Please Select</option>
+                                                  {{#each yearOfStudyOptions}}
+                                                    <option name="option" value="{{this}}">{{this}}</option>
+                                                  {{/each}}
+                                              </select>
+                                            {{/if}}
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td><label for = "confirmNewPassword">House</label></td>
+                                          <td>
+                                            {{#if equals house "Not Set"}}
+                                              <select id="dropdown-hse" name="dropdown" required>
+                                                  <option disabled="disabled" selected="selected">Please Select</option>
+                                                  {{#each houseOptions}}
+                                                    <option name="option" value="{{this}}">{{this}}</option>
+                                                  {{/each}}
+                                              </select>
+                                            {{else}}
+                                              <select id="dropdown-hse" name="dropdown" required>
+                                                  {{#with getUserProfile}}
+                                                    <option disabled="disabled" selected="selected">{{house}}</option>
+                                                  {{/with}}
+
+                                                  <option disabled="disabled" selected="selected">Please Select</option>
+                                                  {{#each houseOptions}}
+                                                    <option name="option" value="{{this}}">{{this}}</option>
+                                                  {{/each}}
+                                              </select>
+                                            {{/if}}
+                                          </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div class="box-footer">
+                                  <button type="submit" class="btn btn-success pull-right">Update</button>
+                                </div>
+
+                        </form>
+                      </div>  <!-- /.row-block -->
+                    </div> <!-- /.box-block -->
+
+                    <!-- Change Password -->
+                    <div class="box box-widget">
+                      <div class="container-fluid">
+                            <div class="box-header with-border">
+                              <div class="title-block">
+                                   <h3>Change Password</h3>
+                              </div>
+                            </div>
+                            <form id="changePassword-form">
+                                <div class="box-body">
+                                  <table>
+                                    <tr>
+                                      <td><label for = "oldPassword">Enter Old Password</label></td>
+                                      <td><input type="password" name="oldPassword" id="oldPassword" placeholder="Old Password" required></td>
+                                    </tr>
+                                    <tr>
+                                      <td><label for = "newPassword">Enter New Password</label></td>
+                                      <td><input type="password"  name="newPassword" id="newPassword" placeholder="New Password" required></td>
+                                    </tr>
+                                    <tr>
+                                      <td><label for = "confirmNewPassword">Confirm New Password</label></td>
+                                      <td><input type="password" name="confirmNewPassword" id="confirmNewPassword" placeholder="Confirm New Password" required></td>
+                                    </tr>
+                                </table>
+                              </div>
+
+                              <div class="box-footer">
+                                <button type="submit" class="btn btn-success pull-right">Change Password</button>
+                              </div>
+                        </form>
+                      </div>  <!-- /.row-block -->
+                    </div> <!-- /.box-block -->
+
+                    <!-- Need to add permission for this section -->
+                    <!-- My Announcements (Only for Admin-users, only can edit their own ) -->
+                    {{#if userHasPermission 'announcements.insert' 'announcements.update' 'announcements.remove' }}
+                      <div class="box box-widget">
+                        <h3 class="box-title  col-xs-6 col-md-4">My Announcements</h3>
+                        <div class="box-body">
+                          <!-- Generate a list of announcements created by user-->
+                        </div>
+                      </div>
+                    {{/if}}
+                    <!-- My Misc Post (For all users, but only can edit their own) -->
+                    <div class="box box-widget">
+                      <h3 class="box-title  col-xs-6 col-md-4">My Misc. Posts</h3>
+                      <div class="box-body">
+                        <!-- Generate a list of announcements created by user-->
+                      </div>
+                    </div>
               </div>
-
-
-              <!-- Change Password -->
-              <div class="box box-default">
-                <h3 class="box-title  col-xs-6 col-md-4">Change Password</h3>
-                <div class="box-body">
-                  <!-- 3 input box, with visual validation, find out how to compare password -->
-                </div>
-                <div class="box-footer">
-                    <button type="submit" class="btn btn-success pull-right">Change Password</button>
-                </div>
-              </div>
-
-              <!-- Need to add permission for this section -->
-              <!-- My Announcements (Only for Admin-users, only can edit their own ) -->
-              <div class="box box-default">
-                <h3 class="box-title  col-xs-6 col-md-4">My Announcements</h3>
-                <div class="box-body">
-                  <!-- Generate a list of announcements created by user-->
-                </div>
-              </div>
-
-              <!-- My Misc Post (For all users, but only can edit their own) -->
-              <div class="box box-default">
-                <h3 class="box-title  col-xs-6 col-md-4">My Misc. Posts</h3>
-                <div class="box-body">
-                  <!-- Generate a list of announcements created by user-->
-                </div>
-              </div>
-
             </section>
 
       </div> <!-- /.box-default -->

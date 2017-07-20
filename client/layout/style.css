@@ -48,23 +48,6 @@ input {
   padding-right: 5px;
 }
 
-/*
-.dropdown{
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown{
-  min-width: 60px !important;
-}
-
-
-.dropdown-label{
-  margin-right: 10px;
-  display:inline-block;
-}
-*/
-
 option,#dropdown{
   color:black;
 }
@@ -220,4 +203,8 @@ textarea{
 
 #annnouncementBox,#miscPostBox{
   color: white;
+}
+
+th, td {
+    padding: 15px;
 }

@@ -16,7 +16,10 @@
       <div class="box-default">
           <!-- Main content -->
             <section class="content">
-              {{> addAnnouncementModal}}
+              {{#if userHasPermission 'announcements.insert'}}
+                {{> addAnnouncementModal}}
+              {{/if}}
+
               <div id="list">
                 {{#with ann_items}}
                   {{#if ann_items.count}}
@@ -40,7 +43,9 @@
                 {{/with}}
               </div>
 
-              <a href="#" id="add" class="btn btn-primary">Add New Announcement</a>
+              {{#if userHasPermission 'announcements.insert'}}
+                <a href="#" id="add" class="btn btn-primary">Add New Announcement</a>
+              {{/if}}
 
             </section>
 
