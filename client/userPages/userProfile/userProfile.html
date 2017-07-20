@@ -38,7 +38,7 @@
                                         <tr>
                                           <td><label for = "year of study">Year of Study</label></td>
                                           <td>
-                                            {{#if equals yearOfStudy "Not Set"}}
+                                            {{#if equals {{yearOfStudy}} "Not Set"}}
                                               <select id="dropdown-yos" name="dropdown" required>
                                                   <option disabled="disabled" selected="selected">Please Select</option>
                                                   {{#each yearOfStudyOptions}}

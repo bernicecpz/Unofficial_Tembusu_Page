@@ -52,7 +52,7 @@ p[class="type-Forums"] {
 }
 
 
-p{
+p[class="type-time"]{
   color:black;
   font-size: 11px;
 }

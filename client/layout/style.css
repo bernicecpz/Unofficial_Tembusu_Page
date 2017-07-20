@@ -136,26 +136,6 @@ input:focus {
   margin: 5px 0;
 }
 
-p{
-  color:white;
-}
-
-p[class^="type-"] {
-  margin: 0;
-}
-
-p[class="type-Interest Groups"] {
-  color: red;
-}
-
-p[class="type-Workshops"] {
-  color: green;
-}
-
-p[class="type-Forums"] {
-  color: blue;
-}
-
 #add-announcement-form,#add-misc-post-form{
   width:80%;
   margin-left: auto;

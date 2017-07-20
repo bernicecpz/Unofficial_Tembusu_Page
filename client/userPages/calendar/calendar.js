@@ -33,7 +33,7 @@ Template.calendar.onRendered( () => {
     eventRender: function(event, element) {
       element.find( '.fc-content' ).html(
         `<h4>${ event.title }</h4>
-         <p>${ moment(event.start.toISOString()).format("hh:mm a") } - ${ moment(event.end.toISOString()).format("hh:mm a") }</p>
+         <p class="type-time">${ moment(event.start.toISOString()).format("hh:mm a") } - ${ moment(event.end.toISOString()).format("hh:mm a") }</p>
          <p class="type-${ event.type }">#${ event.type }</p>
         `
       );
