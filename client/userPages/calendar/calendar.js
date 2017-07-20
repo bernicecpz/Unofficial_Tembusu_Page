@@ -19,6 +19,7 @@ Template.calendar.onRendered( () => {
     allDay: false,
     timeFormat: 'hh:mm a',
     timezone: "local",
+    ignoreTimezone: false,
     header: {
       left: 'agendaDay, agendaWeek, month',
       center: 'title',
@@ -32,9 +33,7 @@ Template.calendar.onRendered( () => {
     eventRender: function(event, element) {
       element.find( '.fc-content' ).html(
         `<h4>${ event.title }</h4>
-         <p>${ event.location }</p>
          <p>${ moment(event.start.toISOString()).format("hh:mm a") } - ${ moment(event.end.toISOString()).format("hh:mm a") }</p>
-         <p>${ event.description }</p>
          <p class="type-${ event.type }">#${ event.type }</p>
         `
       );
@@ -62,8 +61,9 @@ Template.calendar.onRendered( () => {
     dayClick: function(date) {
       if(!isPast(date)){
         Session.set( 'eventModal', { type: 'add', date: $('input[name="start"]').data('daterangepicker').setStartDate(date)});
+        Session.set( 'eventModal', { type: 'add', date: $('input[name="end"]').data('daterangepicker').setStartDate(date)});
         $( '#add-edit-event-modal' ).modal( 'show' );
-      }else{
+      } else {
         Bert.alert( 'Sorry, you can\'t add items to the past!', 'danger' );
       }
     },
@@ -71,7 +71,29 @@ Template.calendar.onRendered( () => {
     eventClick: function(event) {
       Session.set( 'eventModal', { type: 'edit', event: event._id} );
       $( '#add-edit-event-modal' ).modal( 'show' );
-    }
+    },
+
+    eventMouseover: function(calEvent, jsEvent) {
+      var tooltip =
+        '<div class="tooltipevent panel-body" style="border-radius:10px;background:#5A7B5E;position:absolute;z-index:10001">' +
+        '<p class="tool">' + calEvent.title + '</p>' +
+        '<p class="tool">' + calEvent.location + '</p>' +
+        '<p class="tool">' + calEvent.description + '</p>' + '</div>';
+      $("body").append(tooltip);
+      $(this).mouseover(function(e) {
+          $(this).css('z-index', 10000);
+          $('.tooltipevent').fadeIn('500');
+          $('.tooltipevent').fadeTo('10', 1.9);
+      }).mousemove(function(e) {
+          $('.tooltipevent').css('top', e.pageY + 10);
+          $('.tooltipevent').css('left', e.pageX + 20);
+      });
+  },
+
+  eventMouseout: function(calEvent, jsEvent) {
+       $(this).css('z-index', 8);
+       $('.tooltipevent').remove();
+     }
   });
 
   Tracker.autorun( () => {
