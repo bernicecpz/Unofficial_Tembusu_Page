@@ -16,8 +16,6 @@ body {
   color: white;
 }
 
-
-
 .description {
   font-size: 15px;
   letter-spacing: 1px;
@@ -132,6 +130,30 @@ input:focus {
   margin-bottom:15px;
   border:none;
   color: white;
+}
+
+.guest-count {
+  margin: 5px 0;
+}
+
+p{
+  color:white;
+}
+
+p[class^="type-"] {
+  margin: 0;
+}
+
+p[class="type-Interest Groups"] {
+  color: red;
+}
+
+p[class="type-Workshops"] {
+  color: green;
+}
+
+p[class="type-Forums"] {
+  color: blue;
 }
 
 #add-announcement-form,#add-misc-post-form{

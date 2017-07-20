@@ -1,13 +1,11 @@
 .fc-event-container {
   padding: 5px !important;
 }
-
 .fc-event {
   padding: 5px 10px;
   border-color: #ddd;
   background: #96AC87 !important;
 }
-
 .fc-content {
   color: #444;
 }
@@ -32,11 +30,6 @@ h5 {
   margin-top: 5px;
 }
 
-p{
-  color:black;
-  font-size: 11px;
-}
-
 p[class="tool"] {
   color: #CFC59F;
   font-size: 12px;
@@ -56,4 +49,10 @@ p[class="type-Workshops"] {
 
 p[class="type-Forums"] {
   color: blue;
+}
+
+
+p{
+  color:black;
+  font-size: 11px;
 }
