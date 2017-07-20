@@ -61,6 +61,7 @@ Template.calendar.onRendered( () => {
     dayClick: function(date) {
       if(!isPast(date)){
         Session.set( 'eventModal', { type: 'add', date: $('input[name="start"]').data('daterangepicker').setStartDate(date)});
+        Session.set( 'eventModal', { type: 'add', date: $('input[name="end"]').data('daterangepicker').setStartDate(date)});
         $( '#add-edit-event-modal' ).modal( 'show' );
       } else {
         Bert.alert( 'Sorry, you can\'t add items to the past!', 'danger' );
