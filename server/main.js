@@ -55,6 +55,16 @@ Meteor.startup(() => {
 
 });
 
+//Register actions
+Roles.registerAction('announcements.insert');
+Roles.registerAction('announcements.update');
+Roles.registerAction('announcements.remove');
+
+Roles.registerAction('miscPosts.insert');
+Roles.registerAction('miscPosts.update');
+Roles.registerAction('miscPosts.remove');
+
+
 if(Meteor.isServer) {
   Meteor.methods({
     //Check if this email already has an user account tied to it.

@@ -38,14 +38,6 @@
                                         <tr>
                                           <td><label for = "year of study">Year of Study</label></td>
                                           <td>
-                                            {{#if equals {{yearOfStudy}} "Not Set"}}
-                                              <select id="dropdown-yos" name="dropdown" required>
-                                                  <option disabled="disabled" selected="selected">Please Select</option>
-                                                  {{#each yearOfStudyOptions}}
-                                                    <option name="option" value="{{this}}">{{this}}</option>
-                                                  {{/each}}
-                                              </select>
-                                            {{else}}
                                               <select id="dropdown-yos" name="dropdown" required>
                                                   {{#with getUserProfile}}
                                                     <option disabled="disabled" selected="selected">{{yearOfStudy}}</option>
@@ -56,20 +48,11 @@
                                                     <option name="option" value="{{this}}">{{this}}</option>
                                                   {{/each}}
                                               </select>
-                                            {{/if}}
                                           </td>
                                         </tr>
                                         <tr>
                                           <td><label for = "confirmNewPassword">House</label></td>
                                           <td>
-                                            {{#if equals house "Not Set"}}
-                                              <select id="dropdown-hse" name="dropdown" required>
-                                                  <option disabled="disabled" selected="selected">Please Select</option>
-                                                  {{#each houseOptions}}
-                                                    <option name="option" value="{{this}}">{{this}}</option>
-                                                  {{/each}}
-                                              </select>
-                                            {{else}}
                                               <select id="dropdown-hse" name="dropdown" required>
                                                   {{#with getUserProfile}}
                                                     <option disabled="disabled" selected="selected">{{house}}</option>
@@ -80,7 +63,7 @@
                                                     <option name="option" value="{{this}}">{{this}}</option>
                                                   {{/each}}
                                               </select>
-                                            {{/if}}
+
                                           </td>
                                         </tr>
                                     </table>
@@ -111,11 +94,11 @@
                                     </tr>
                                     <tr>
                                       <td><label for = "newPassword">Enter New Password</label></td>
-                                      <td><input type="password"  name="newPassword" id="newPassword" placeholder="New Password" required></td>
+                                      <td><input type="password"  name="npassword" id="npassword" placeholder="New Password" required></td>
                                     </tr>
                                     <tr>
                                       <td><label for = "confirmNewPassword">Confirm New Password</label></td>
-                                      <td><input type="password" name="confirmNewPassword" id="confirmNewPassword" placeholder="Confirm New Password" required></td>
+                                      <td><input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm New Password" required></td>
                                     </tr>
                                 </table>
                               </div>
@@ -129,21 +112,114 @@
 
                     <!-- Need to add permission for this section -->
                     <!-- My Announcements (Only for Admin-users, only can edit their own ) -->
-                    {{#if userHasPermission 'announcements.insert' 'announcements.update' 'announcements.remove' }}
-                      <div class="box box-widget">
-                        <h3 class="box-title  col-xs-6 col-md-4">My Announcements</h3>
-                        <div class="box-body">
-                          <!-- Generate a list of announcements created by user-->
-                        </div>
-                      </div>
+                    {{#if userHasAnnPermission 'announcements.insert' 'announcements.update' 'announcements.remove' }}
+                        <div class="box box-widget">
+                          <div class="container-fluid">
+                                <div class="box-header with-border">
+                                  <div class="title-block">
+                                       <h3>My Announcements</h3>
+                                  </div>
+                                </div>
+                                  <div class="box-body">
+
+                                    {{#if userHasAnnPermission 'announcements.update'}}
+                                      {{> modifyAnnouncementModal}}
+                                    {{/if}}
+
+                                    {{#with ann_items}}
+                                      {{#if ann_items.count}}
+                                          {{#each ann_items}}
+                                            <div class="box box-widget">
+                                              <div class="container-fluid">
+                                                    <div class="box-header with-border">
+                                                      <div class="title-block">
+                                        				           <strong>{{title}}</strong>
+                                                      </div>
+                                                      <div class="box-tools pull-right">
+                                                        <button class="btn btn-box-tool" name="editAnnouncement" id="editAnnouncement" value="{{_id}}"><i class="glyphicon glyphicon-pencil"></i></button>
+                                                        <button class="btn btn-box-tool"  name="removeAnnouncement" id="removeAnnouncement" value="{{_id}}"><i class="glyphicon glyphicon-remove"></i></button>
+                                                      </div><!-- /.box-tools -->
+                                                    </div>
+                                                    <div class="box-body">
+                                                        {{#autolink}} {{content}} {{/autolink}}
+                                                    </div>
+                                                    <div class="box-footer">
+                                                      <p class="date pull-right">Posted on {{date}}</p>
+                                                    </div>
+                                              </div>  <!-- /.row-block -->
+                                            </div> <!-- /.box-block -->
+                                          {{/each}}
+                                          {{else}}
+                                            You do not have make announcements previously. Go and make an anouncement now!
+                                          {{/if}}
+                                      {{/with}}
+                                  </div>
+
+                                  {{#if isMoreThan ann_items.count 2}}
+                                    <div class="box-footer">
+                                      <button type="submit" class="btn btn-success pull-right" name="seeMoreAnn" id="seeMoreAnn">See More ... </button>
+                                    </div>
+                                  {{/if}}
+
+                          </div>  <!-- /.row-block -->
+                        </div> <!-- /.box-block -->
+
                     {{/if}}
+
                     <!-- My Misc Post (For all users, but only can edit their own) -->
-                    <div class="box box-widget">
-                      <h3 class="box-title  col-xs-6 col-md-4">My Misc. Posts</h3>
-                      <div class="box-body">
-                        <!-- Generate a list of announcements created by user-->
-                      </div>
-                    </div>
+                    {{#if userHasMiscPermission 'miscPosts.insert' 'miscPosts.update' 'miscPosts.remove' }}
+                        <div class="box box-widget">
+                          <div class="container-fluid">
+                                <div class="box-header with-border">
+                                  <div class="title-block">
+                                       <h3>My Misc. Posts</h3>
+                                  </div>
+                                </div>
+                                  <div class="box-body">
+
+                                    {{#if userHasMiscPermission 'miscPosts.update'}}
+                                      {{> modifyMiscPostModal}}
+                                    {{/if}}
+
+                                    {{#with misc_items}}
+                                      {{#if misc_items.count}}
+                                          {{#each misc_items}}
+                                            <div class="box box-widget">
+                                              <div class="container-fluid">
+                                                    <div class="box-header with-border">
+                                                      <div class="title-block">
+                                        				           <strong>{{subject}}</strong>
+                                                      </div>
+                                                      <div class="box-tools pull-right">
+                                                        <button class="btn btn-box-tool" name="editMiscPost" id="editMiscPost" value="{{_id}}"><i class="glyphicon glyphicon-pencil"></i></button>
+                                                        <button class="btn btn-box-tool"  name="removeMiscPost" id="removeMiscPost" value="{{_id}}"><i class="glyphicon glyphicon-remove"></i></button>
+                                                      </div><!-- /.box-tools -->
+                                                    </div>
+                                                    <div class="box-body">
+                                                        {{#autolink}} {{content}} {{/autolink}}
+                                                    </div>
+                                                    <div class="box-footer">
+                                                      <p class="date pull-right">Posted on {{date}}</p>
+                                                    </div>
+                                              </div>  <!-- /.row-block -->
+                                            </div> <!-- /.box-block -->
+                                          {{/each}}
+                                          {{else}}
+                                            You have no posts. Go and post one now!
+                                          {{/if}}
+                                      {{/with}}
+                                  </div>
+
+                                  {{#if isMoreThan misc_items.count 2}}
+                                    <div class="box-footer">
+                                      <button type="submit" class="btn btn-success pull-right" name="seeMoreAnn" id="seeMoreMisc">See More ... </button>
+                                    </div>
+                                  {{/if}}
+
+                          </div>  <!-- /.row-block -->
+                        </div> <!-- /.box-block -->
+
+                    {{/if}}
               </div>
             </section>
 

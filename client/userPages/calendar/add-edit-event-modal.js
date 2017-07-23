@@ -34,6 +34,22 @@ Template.addEditEventModal.helpers({
         end: eventModal.date
       };
     }
+  },
+
+  isEventOwner: function(event,template){
+    let eventModal = Session.get( 'eventModal' );
+    var eventId = eventModal.event;
+  
+    var checkOwner = Events.findOne({_id: eventId});
+    var owner = checkOwner && checkOwner.createdBy;
+
+
+    if(owner === Meteor.userId()){
+      return true;
+    }else{
+      return false;
+    }
+
   }
 });
 
@@ -70,7 +86,8 @@ Template.addEditEventModal.events({
           start: template.find( '[name="start"]' ).value,
           end: template.find( '[name="end"]' ).value,
           type: template.find( '[name="type"] option:selected' ).value,
-          description: template.find( '[name="description"]' ).value
+          description: template.find( '[name="description"]' ).value,
+          createdBy: Meteor.userId()
         };
 
     if ( submitType === 'editEvent' ) {

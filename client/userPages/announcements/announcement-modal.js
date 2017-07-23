@@ -29,8 +29,7 @@ if(Meteor.isClient){
       */
 
       //Get userId for createdBy parameter
-      var getUser = Meteor.user('getUserId');
-      var userId = getUser._id;
+      var userId = Meteor.userId();
 
       let eventItem = {
         title: $('#annTitle').val(),
@@ -47,7 +46,19 @@ if(Meteor.isClient){
         }
       });
 
+      //Clear previous input box values
+      //Source: https://stackoverflow.com/questions/21151044/how-to-clear-all-input-fields-in-bootstrap-modal-when-clicking-data-dismiss-butt 
+      $('#add-announcement-modal').on('hidden.bs.modal', function (e) {
+        $(this)
+          .find("input,textarea,select")
+             .val('')
+             .end()
+          .find("input[type=checkbox], input[type=radio]")
+             .prop("checked", "")
+             .end();
+      });
         $( '#add-announcement-modal' ).modal( 'hide' );
+
     }
   });
 }

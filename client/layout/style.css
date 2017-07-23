@@ -29,6 +29,7 @@ body {
   min-height: 80vh;
   flex-direction: column;
   flex: 1;
+  overflow: auto;
 }
 
 .main-footer {
@@ -36,6 +37,7 @@ body {
   bottom: 0;
   left: 0;
   text-align: center
+  position:fixed;
 }
 
 input {
@@ -136,7 +138,7 @@ input:focus {
   margin: 5px 0;
 }
 
-#add-announcement-form,#add-misc-post-form{
+#add-announcement-form,#add-misc-post-form,#modify-announcement-form,#modify-miscPost-form{
   width:80%;
   margin-left: auto;
   margin-right: auto;
@@ -152,4 +154,8 @@ textarea{
 
 th, td {
     padding: 15px;
+}
+
+p[class="date pull-right"]{
+  color: black;
 }

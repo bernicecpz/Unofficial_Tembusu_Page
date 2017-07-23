@@ -1,21 +1,10 @@
 import { Mongo } from 'meteor/mongo';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import {Roles} from 'meteor/nicolaslopezj:roles';
+import  {AdminUserRole} from '../both/lib/roles.js';
+
 
 Announcements = new Mongo.Collection('announcements');
-
-/*Announcements.allow({
-  insert: () => false,
-  update: () => false,
-  remove: () => false
-});
-
-Announcements.deny({
-  insert: () => true,
-  update: () => true,
-  remove: () => true
-});*/
-
-
 
 //Use the action
 Announcements.allow({
@@ -40,12 +29,18 @@ Announcements.deny({
   remove: function(userId, doc, fields, modifier){
     return Roles.deny(userId, 'announcements.remove', userId, doc, fields, modifier);
   }
-})
+});
 
 //Create a new role
-AdminUserRole = new Roles.Role('admin-user');
+
+Announcements.attachRoles('admin-user');
 
 //Setting the allow/deny rules
+AdminUserRole.allow('announcements.insert',function(userId, doc, fields, modifier){
+  return true; //Allowed to edit his own posts.
+});
+
+
 AdminUserRole.allow('announcements.update',function(userId, doc, fields, modifier){
   return doc.userId === userId; //Allowed to edit his own posts.
 });

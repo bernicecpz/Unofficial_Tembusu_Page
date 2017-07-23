@@ -7,6 +7,7 @@ Meteor.methods({
       end: String,
       type: String,
       description: String,
+      createdBy: String
     });
 
     try {
@@ -34,6 +35,7 @@ Meteor.methods({
       end: String,
       type: Match.Optional( String ),
       description: Match.Optional( String ),
+      createdBy: String
     });
 
     try {

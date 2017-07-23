@@ -1,13 +1,14 @@
-<template name="announcement">
+<template name="myMiscPosts">
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <section class="content-header">
       <h1>
-        Anouncements
+        My Misc. Posts
       </h1>
       <ol class="breadcrumb">
         <li><a href="{{pathFor route='home'}}"><i class="fa fa-dashboard"></i>Home</a></li>
-        <li class="active">Anouncements</li>
+        <li><a href="{{pathFor route='userprofile'}}">User Profile</a></li>
+        <li class="active">My Misc. Posts</li>
       </ol>
     </section>
 
@@ -16,20 +17,24 @@
       <div class="box-default">
           <!-- Main content -->
             <section class="content">
-              {{#if userHasPermission 'announcements.insert'}}
-                {{> addAnnouncementModal}}
+              {{#if userHasPermission 'miscPosts.update'}}
+                {{> modifyMiscPostModal}}
               {{/if}}
 
               <div id="list">
-                {{#with ann_items}}
-                  {{#if ann_items.count}}
-                      {{#each ann_items}}
+                {{#with misc_items}}
+                  {{#if misc_items.count}}
+                      {{#each misc_items}}
                         <div class="box box-widget">
                           <div class="container-fluid">
                                 <div class="box-header with-border">
                                   <div class="title-block">
-                    				           <strong>{{title}}</strong>
+                    				           <strong>{{subject}}</strong>
                                   </div>
+                                  <div class="box-tools pull-right">
+                                    <button class="btn btn-box-tool" name="editMiscPost" id="editMiscPost" value="{{_id}}"><i class="glyphicon glyphicon-pencil"></i></button>
+                                    <button class="btn btn-box-tool"  name="removeMiscPost" id="removeMiscPost" value="{{_id}}"><i class="glyphicon glyphicon-remove"></i></button>
+                                  </div><!-- /.box-tools -->
                                 </div>
                                 <div class="box-body">
                                     {{#autolink}} {{content}} {{/autolink}}
@@ -45,10 +50,6 @@
                   {{/if}}
                 {{/with}}
               </div>
-
-              {{#if userHasPermission 'announcements.insert'}}
-                <a href="#" id="add" class="btn btn-primary">Add New Announcement</a>
-              {{/if}}
 
             </section>
 

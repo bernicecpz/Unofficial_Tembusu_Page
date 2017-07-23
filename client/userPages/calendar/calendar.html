@@ -19,7 +19,10 @@
 
       <div class="box-default">
         <div class="box box-success">
+
+          {{#if userHasPermission 'events.insert' 'events.update' 'events.remove'}}
           {{> addEditEventModal }}
+          {{/if}}
           <div id="events-calendar">
           </div>
         </div>

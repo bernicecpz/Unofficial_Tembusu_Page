@@ -1,13 +1,14 @@
-<template name="announcement">
+<template name="myAnnouncements">
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <section class="content-header">
       <h1>
-        Anouncements
+        My Anouncements
       </h1>
       <ol class="breadcrumb">
         <li><a href="{{pathFor route='home'}}"><i class="fa fa-dashboard"></i>Home</a></li>
-        <li class="active">Anouncements</li>
+        <li><a href="{{pathFor route='userprofile'}}">User Profile</a></li>
+        <li class="active">My Anouncements</li>
       </ol>
     </section>
 
@@ -16,8 +17,8 @@
       <div class="box-default">
           <!-- Main content -->
             <section class="content">
-              {{#if userHasPermission 'announcements.insert'}}
-                {{> addAnnouncementModal}}
+              {{#if userHasPermission 'announcements.update'}}
+                {{> modifyAnnouncementModal}}
               {{/if}}
 
               <div id="list">
@@ -30,6 +31,10 @@
                                   <div class="title-block">
                     				           <strong>{{title}}</strong>
                                   </div>
+                                  <div class="box-tools pull-right">
+                                    <button class="btn btn-box-tool" name="editAnnouncement" id="editAnnouncement" value="{{_id}}"><i class="glyphicon glyphicon-pencil"></i></button>
+                                    <button class="btn btn-box-tool"  name="removeAnnouncement" id="removeAnnouncement" value="{{_id}}"><i class="glyphicon glyphicon-remove"></i></button>
+                                  </div><!-- /.box-tools -->
                                 </div>
                                 <div class="box-body">
                                     {{#autolink}} {{content}} {{/autolink}}
@@ -45,10 +50,6 @@
                   {{/if}}
                 {{/with}}
               </div>
-
-              {{#if userHasPermission 'announcements.insert'}}
-                <a href="#" id="add" class="btn btn-primary">Add New Announcement</a>
-              {{/if}}
 
             </section>
 

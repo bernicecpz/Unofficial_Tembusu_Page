@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
 import { Tracker } from 'meteor/tracker';
-
+import {Roles} from 'meteor/nicolaslopezj:roles'
 
 if(Meteor.isClient){
 
@@ -14,7 +14,7 @@ if(Meteor.isClient){
     //Display all the annoucnements showing the latest announcements
     ann_items: function(){
       // Sorting parameters: -1 for descending order, 1 for ascending order, limit allows us to control the number of records to show
-      var sortByDates = Announcements.find({}, {sort: { start: -1}});
+      var sortByDates = Announcements.find({}, {sort: { date: -1,_id: -1}});
       return  sortByDates;
     },
   });

@@ -16,7 +16,7 @@ Meteor.methods({
     },
 
     removeMiscPost(event){
-      check(event, String);
+      check(event, Object);
 
       try{
         return MiscellaneousPosts.remove( event );

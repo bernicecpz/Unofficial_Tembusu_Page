@@ -232,6 +232,55 @@ Router.route('/userprofile',{
     }
 });
 
+
+Router.route('/myAnnouncements',{
+    name:'myAnnouncements',
+    template:'myAnnouncements',
+    yieldTemplates: {
+      '_appHeader': {to: 'header'},
+      '_appFooter': {to: 'footer'}
+    },
+    data: function(){
+      var currentUser = Meteor.userId();
+    },
+    onRun: function(){
+      this.next();
+    },
+    onBeforeAction: function(){
+      var currentUser = Meteor.userId();
+      if(currentUser){
+        this.layout('appLayout');
+        this.next();
+      }else{
+        this.render('main');
+      }
+    }
+});
+
+Router.route('/myMiscPosts',{
+    name:'myMiscPosts',
+    template:'myMiscPosts',
+    yieldTemplates: {
+      '_appHeader': {to: 'header'},
+      '_appFooter': {to: 'footer'}
+    },
+    data: function(){
+      var currentUser = Meteor.userId();
+    },
+    onRun: function(){
+      this.next();
+    },
+    onBeforeAction: function(){
+      var currentUser = Meteor.userId();
+      if(currentUser){
+        this.layout('appLayout');
+        this.next();
+      }else{
+        this.render('main');
+      }
+    }
+});
+
 Router.route('/search',{
     name:'search',
     template:'search',

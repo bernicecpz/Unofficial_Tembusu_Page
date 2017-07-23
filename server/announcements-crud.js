@@ -16,7 +16,7 @@ Meteor.methods({
     },
 
     removeAnnouncement(event){
-      check(event, String);
+      check(event, Object);
 
       try{
         return Announcements.remove( event );

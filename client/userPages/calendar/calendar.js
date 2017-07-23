@@ -12,6 +12,13 @@ Template.calendar.onCreated( () => {
   Meteor.subscribe('getEvents');
 });
 
+Template.calendar.helpers({
+  userHasAnnPermission: function(){
+    var checkPermission = Roles.userHasPermission(Meteor.userId(),'events.insert','events.update','events.remove');
+    return checkPermission;
+  },
+});
+
 Template.calendar.onRendered( () => {
 
   $( '#events-calendar' ).fullCalendar({
@@ -32,7 +39,8 @@ Template.calendar.onRendered( () => {
 
     eventRender: function(event, element) {
       element.find( '.fc-content' ).html(
-        `<h4>${ event.title }</h4>
+        `<input type="hidden" name="id" value='${event._id}'>
+         <h4>${ event.title }</h4>
          <p class="type-time">${ moment(event.start.toISOString()).format("hh:mm a") } - ${ moment(event.end.toISOString()).format("hh:mm a") }</p>
          <p class="type-${ event.type }">#${ event.type }</p>
         `
