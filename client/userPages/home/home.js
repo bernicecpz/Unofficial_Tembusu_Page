@@ -9,11 +9,20 @@ if(Meteor.isClient){
     Meteor.subscribe('getEvents');
     Meteor.subscribe('getAnnouncements');
     Meteor.subscribe('getMiscPosts');
+    Meteor.subscribe('getUserProfiles');
+    Meteor.subscribe('getEmails');
   });
 
 
   Template.home.helpers({
     // Sorting parameters: -1 for descending order, 1 for ascending order, limit allows us to control the number of records to show
+
+    getUserProfile: function(){
+      var getUser = Meteor.user();
+      var email = getUser && getUser.emails && getUser.emails[0].address;
+      var getUserProfile = UserProfiles.findOne({email:email});
+      return getUserProfile;
+    },
 
     all_event_items: function(){
       //Display the upcoming events

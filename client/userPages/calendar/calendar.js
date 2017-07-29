@@ -32,7 +32,13 @@ Template.calendar.onRendered( () => {
       center: 'title',
       right: 'today prev,next'
     }, //close 'header'
-
+    eventLimit: true,
+    views:{
+      month:{
+        eventLimit: 3
+      }
+    },
+    aspectRatio: 2,
     events: function(start, end, timezone, callback) {
       callback(Events.find().fetch());
     }, //close 'events'

@@ -23,21 +23,24 @@ body {
   text-align: center;
   color: white;
 }
+/*
+.wrapper{
+  padding: 0 0 0px;
+  position: relative;
+}*/
 
 .content{
   display: flex;
   min-height: 80vh;
   flex-direction: column;
   flex: 1;
-  overflow: auto;
+  background: #ECF0F5;
 }
 
 .main-footer {
-  right: 0;
   bottom: 0;
   left: 0;
-  text-align: center
-  position:fixed;
+  right: 0;
 }
 
 input {
@@ -148,12 +151,14 @@ textarea{
   resize: none;
 }
 
-#annnouncementBox,#miscPostBox{
+#announcementBox,#miscPostBox,#upcomingEventBox{
   color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 th, td {
-    padding: 15px;
+  padding: 15px;
 }
 
 p[class="date pull-right"]{

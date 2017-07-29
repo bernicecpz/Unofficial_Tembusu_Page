@@ -16,6 +16,7 @@ Template.search.onCreated( () => {
 Template.search.helpers({
   searching() {
     return Template.instance().searching.get();
+    console.log("Is still loading & searching");
   },
   query() {
     return Template.instance().searchQuery.get();
@@ -25,11 +26,15 @@ Template.search.helpers({
     if ( events ) {
       return events;
     }
+  },
+  report: function(){
+    console.log("Is still loading");
   }
 });
 
 Template.search.events({
   'keyup [name="search"]' ( event, template ) {
+      event.preventDefault();
     let value = event.target.value.trim();
 
     if ( value !== '' && event.keyCode === 13 ) {

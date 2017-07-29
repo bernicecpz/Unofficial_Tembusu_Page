@@ -24,7 +24,8 @@
 
       <ul class="list-group">
         {{#if searching}}
-          {{> loading}}
+          {{> spinner}}
+          {{report}}
         {{else}}
           {{#each events}}
             <li class="list-group-item clearfix">

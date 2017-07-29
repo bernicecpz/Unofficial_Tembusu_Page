@@ -5,6 +5,10 @@ let closeModal = () => {
   $( '.modal-backdrop' ).fadeOut();
 };
 
+Template.registerHelper('equals',function(a,b){
+  return a === b;
+});
+
 Template.addEditEventModal.helpers({
   modalType( type ) {
     let eventModal = Session.get( 'eventModal' );
@@ -36,13 +40,11 @@ Template.addEditEventModal.helpers({
     }
   },
 
-  isEventOwner: function(event,template){
+  isEventOwner: function(){
     let eventModal = Session.get( 'eventModal' );
     var eventId = eventModal.event;
-  
     var checkOwner = Events.findOne({_id: eventId});
     var owner = checkOwner && checkOwner.createdBy;
-
 
     if(owner === Meteor.userId()){
       return true;
@@ -102,6 +104,17 @@ Template.addEditEventModal.events({
         closeModal();
       }
     });
+
+    $('#add-edit-event-modal').on('hidden.bs.modal', function (e) {
+      $(this)
+        .find("input,textarea,select")
+           .val('')
+           .end()
+        .find("input[type=checkbox], input[type=radio]")
+           .prop("checked", "")
+           .end();
+    });
+
   }, //close 'submit form'
   'click .delete-event' ( event, template ) {
     let eventModal = Session.get( 'eventModal' );
@@ -115,6 +128,17 @@ Template.addEditEventModal.events({
           closeModal();
         }
       });
+
+
+          $('#add-edit-event-modal').on('hidden.bs.modal', function (e) {
+            $(this)
+              .find("input,textarea,select")
+                 .val('')
+                 .end()
+              .find("input[type=checkbox], input[type=radio]")
+                 .prop("checked", "")
+                 .end();
+          });
     }
   } //close 'click .delete-event'
 });

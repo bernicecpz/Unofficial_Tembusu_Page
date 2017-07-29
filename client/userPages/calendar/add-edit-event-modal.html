@@ -57,6 +57,7 @@
           </div>
 
         </div>
+
         <div class="modal-footer">
           {{#if modalType 'edit'}}
             {{#if isEventOwner}}
@@ -67,12 +68,17 @@
           {{/if}}
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
 
-          {{#if isEventOwner}}
-            <button type="submit" class="btn btn-success edit-event">{{modalLabel.button}} Event</button>
+          {{#if modalType 'add'}}
+              <button type="submit" class="btn btn-success edit-event">{{modalLabel.button}} Event</button>
           {{else}}
-            <button type="submit" class="btn btn-success edit-event" disabled> <div rel="tooltip" title="You do not have permission to edit this event.">{{modalLabel.button}} Event</div></button>
+              {{#if isEventOwner}}
+                <button type="submit" class="btn btn-success edit-event">{{modalLabel.button}} Event</button>
+              {{else}}
+                <button type="submit" class="btn btn-success edit-event" disabled> <div rel="tooltip" title="You do not have permission to edit this event.">{{modalLabel.button}} Event</div></button>
+              {{/if}}
           {{/if}}
         </div>
+
       </form>
     </div>
   </div>

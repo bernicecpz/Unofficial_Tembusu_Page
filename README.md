@@ -1,7 +1,8 @@
 # The Unofficial Tembusu Page
-17 July 2017: Integration of 2 main features, dashboard + search function   <br />
-26 June 2017: Integration with Calendar  <br />
-29 May 2017: Development of main, login and register page; Routing is established with Iron Router. Mailgun is used as SMTP provider.
+23 July 2017: Implementation of permissions for events, including tweaks to design and loading processes.  
+17 July 2017: Integration of 2 main features, dashboard + search function.  
+26 June 2017: Integration with Calendar  
+29 May 2017: Development of main, login and register page; Routing is established with Iron Router. Mailgun is used as SMTP provider.  
 
 # Setting up steps
 Enter the following commands in order :
@@ -34,58 +35,57 @@ Enter the following commands in order :
 + Depreciation warning for moment date format, need to change to __supported ISO8601 forms__, with anything else needing to be a __format string__.
   - Refer here for the known formats: http://momentjs.com/docs/#/parsing/string/
 
-# TO-DOs:
-+ Add in appropriate permissions that do not allow other users to make changes to other events/announcement/misc unless it's their own.**
-
-+ Adjust the following HTML elements:
-  - _appHeader sidebar-menu: When another option is selected, change the li class to be active when click.
 
 # Resolved Issues
 + The end date in the calendar is exclusive. As such, there is a need to select 1 more day in order to be able to display the intended date. Need to find an allDay option to apply to dynamic events, since allDay seems to can only be set in static individual events. [RESOLVED]
 + Need to find a way to export the collections from MongoDB. [RESOLVED]
 + "compatability" folder containing bootstrap-less has been removed to resolve its incompatability with admin-lte.[RESOLVED]
++ Add in appropriate permissions that do not allow other users to make changes to other events/announcement/misc unless it's their own. [RESOLVED]
++ Make footer to stay down regardless of content
 
 # Meteor packages used
 To find out about the packages version and description, use command - "__meteor list__"  
-accounts-base                        
-accounts-password                    
-aldeed:collection2                   
-aldeed:simple-schema                 
-blaze-html-templates                 
-check                                
-cunneen:mailgun                      
+accounts-base                         
+accounts-password                     
+aldeed:collection2                    
+aldeed:simple-schema                  
+blaze-html-templates                  
+check                                 
+cunneen:mailgun                       
 dangrossman:bootstrap-daterangepicker
-ecmascript                           
-ejson                                
-email                                
-es5-shim                             
-fullcalendar:fullcalendar            
-huttonr:bootstrap3                   
-huttonr:bootstrap3-assets            
-iron:controller                      
-iron:core                            
-iron:dynamic-template                
-iron:layout                          
-iron:location                        
-iron:router                          
-iron:url                             
-joeinnes:meteor-autolinker           
-jquery                               
-less                                 
-meteor-base                          
-mobile-experience                    
-momentjs:moment                      
-mongo                                
-nicolaslopezj:roles                  
-reactive-dict                        
-reactive-var                         
-redaty:admin-lte                     
-session                              
-shell-server                         
-standard-minifier-css                
-standard-minifier-js                 
-templating                           
-themeteorchef:bert                   
-themeteorchef:jquery-validation      
-tracker                              
-twbs:bootstrap                       
+ecmascript                            
+ejson                                 
+email                                 
+es5-shim                              
+fullcalendar:fullcalendar             
+huttonr:bootstrap3                    
+huttonr:bootstrap3-assets             
+iron:controller                       
+iron:core                             
+iron:dynamic-template                 
+iron:layout                           
+iron:location                         
+iron:router                           
+iron:url                              
+joeinnes:meteor-autolinker            
+jquery                                
+less                                  
+meteor-base                           
+mobile-experience                     
+momentjs:moment                       
+mongo                                 
+natestrauser:filepicker-plus          
+nicolaslopezj:roles                   
+random                                
+reactive-dict                         
+reactive-var                          
+redaty:admin-lte                      
+session                               
+shell-server                          
+standard-minifier-css                 
+standard-minifier-js                  
+templating                            
+themeteorchef:bert                    
+themeteorchef:jquery-validation       
+tracker                               
+twbs:bootstrap                                  
