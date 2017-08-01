@@ -1,4 +1,5 @@
 # The Unofficial Tembusu Page
+01 August 2017: Include safeguard for user profile in the case where an user profile is not created successfully during user creation.  
 Beyond Milestone 3: Attempting to resolve bugs within codes.  
 23 July 2017: Implementation of permissions for events, including tweaks to design and loading processes.  
 17 July 2017: Integration of 2 main features, dashboard + search function.  
@@ -36,7 +37,7 @@ Enter the following commands in order :
 + Depreciation warning for moment date format, need to change to __supported ISO8601 forms__, with anything else needing to be a __format string__.
   - Refer here for the known formats: http://momentjs.com/docs/#/parsing/string/
   - Update, 29 July 2017: Will retain the current format of the time and date, as it fits our needs for our calendar feature
-
++ "Half hour delay": Realized that the 30 minutes increase in timing under the listWeek view was caused by the padding of the event container as implemented in CSS. Changes have been made to accommodated to the event container size restraint. 
 
 # Resolved Issues
 + The end date in the calendar is exclusive. As such, there is a need to select 1 more day in order to be able to display the intended date. Need to find an allDay option to apply to dynamic events, since allDay seems to can only be set in static individual events. [RESOLVED]

@@ -22,6 +22,7 @@ Template.calendar.helpers({
 Template.calendar.onRendered( () => {
 
   $( '#events-calendar' ).fullCalendar({
+
     height: "parent",
     allDay: false,
     timeFormat: 'hh:mm a',
@@ -46,8 +47,8 @@ Template.calendar.onRendered( () => {
     eventRender: function(event, element) {
       element.find( '.fc-content' ).html(
         `<input type="hidden" name="id" value='${event._id}'>
-         <h4>${ event.title }</h4>
-         <p class="type-time">${ moment(event.start.toISOString()).format("hh:mm a") } - ${ moment(event.end.toISOString()).format("hh:mm a") }</p>
+         <h4><strong><i><u>${ event.title }</u></i></strong></h4>
+         <p class="type-time"><strong>${ moment(event.start.toISOString()).format("hh:mm a") } - ${ moment(event.end.toISOString()).format("hh:mm a") }</strong></p>
          <p class="type-${ event.type }">#${ event.type }</p>
         `
       );

@@ -45,14 +45,18 @@ Template.addEditEventModal.helpers({
     let eventModal = Session.get( 'eventModal' );
     var eventId = eventModal.event;
 
-    var checkOwner = Events.findOne({_id: eventId});
-    var owner = checkOwner && checkOwner.createdBy;
-
-
-    if(owner === Meteor.userId()){
-      return true;
+    if(typeof eventId === "undefined" ){
+      return false
     }else{
-      return false;
+      var checkOwner = Events.findOne({_id: eventId});
+      var owner = checkOwner && checkOwner.createdBy;
+
+
+      if(owner === Meteor.userId()){
+        return true;
+      }else{
+        return false;
+      }
     }
 
   }

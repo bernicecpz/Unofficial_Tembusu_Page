@@ -1,8 +1,9 @@
-.fc-event-container {
+/*.fc-event-container {
   padding: 5px !important;
-}
+}*/
+
 .fc-event {
-  padding: 5px 10px;
+  padding: 3px 5px;
   border-color: #ddd;
   background: #96AC87 !important;
 }
@@ -18,16 +19,14 @@ h5 {
 
 h4 {
   color: black;
-  font-size: 13px;
-  line-height: 18px;
+  font-size: 11px;
+  line-height: 15px;
   white-space: normal;
-  margin-bottom: 5px;
 }
 
 h5 {
   color: #888;
   font-size: 12px;
-  margin-top: 5px;
 }
 
 p[class="tool"] {
@@ -41,18 +40,21 @@ p[class^="type-"] {
 
 p[class="type-Interest Groups"] {
   color: red;
+  font-size: 9px;
 }
 
 p[class="type-Workshops"] {
   color: green;
+  font-size: 9px;
 }
 
 p[class="type-Forums"] {
   color: blue;
+  font-size: 9px;
 }
 
 
 p[class="type-time"]{
   color:black;
-  font-size: 11px;
+  font-size: 10px;
 }
