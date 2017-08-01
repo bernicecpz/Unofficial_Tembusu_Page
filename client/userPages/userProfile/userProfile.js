@@ -41,6 +41,14 @@ if(Meteor.isClient){
     }
   });
 
+  Template.registerHelper('isEmpty',function(a){
+    if(a == "undefined"){
+      return false;
+    }else{
+      return true;
+    }
+  });
+
   Template.userprofile.helpers({
     yearOfStudyOptions: function(){
       return ["Year 1","Year 2","Year 3","Year 4","Graduate"];
@@ -136,24 +144,45 @@ if(Meteor.isClient){
 
       //Getting the id for the userProfile
       var getUserProfile = UserProfiles.findOne({email:email});
-      var userProfileId = getUserProfile._id;
+        console.log("Check: " + getUserProfile);
+        if(typeof getUserProfile === "undefined"){
+          //Create the item
+          let userProfile = {
+            email: email,
+            nameOfUser: getName,
+            yearOfStudy: yosOption,
+            house: hseOption
+          };
 
-      //Create the item
-      let userProfile = {
-        _id: userProfileId,
-        email: email,
-        nameOfUser: getName,
-        yearOfStudy: yosOption,
-        house: hseOption
-      };
+            //If the user profile does not exist, create one
+            Meteor.call('addUserProfile', userProfile, function(error,result){
+              if(error){
+                Bert.alert(error.reason,'danger');
+              }else{
+                Bert.alert('User profile created!', 'success');
+              }
+            });
 
-      Meteor.call('editUserProfile', userProfile, function(error,result){
-        if(error){
-          Bert.alert(error.reason,'danger');
         }else{
-          Bert.alert('User profile updated!', 'success');
+          var userProfileId = getUserProfile._id;
+
+            //Update the item
+            let userProfile = {
+              _id: userProfileId,
+              email: email,
+              nameOfUser: getName,
+              yearOfStudy: yosOption,
+              house: hseOption
+            };
+
+            Meteor.call('editUserProfile', userProfile, function(error,result){
+              if(error){
+                Bert.alert(error.reason,'danger');
+              }else{
+                Bert.alert('User profile updated!', 'success');
+              }
+            });
         }
-      });
 
     },
 

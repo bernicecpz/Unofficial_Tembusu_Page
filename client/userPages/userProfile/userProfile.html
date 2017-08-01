@@ -31,13 +31,14 @@
                                       <table>
                                         <tr>
                                           <td><label for = "name">Name</label></td>
-                                          {{#if getUserProfile}}
-                                            {{#with getUserProfile}}
-                                              <td><input type="text" name="userName" id="userName" placeholder="Enter Your Name" value='{{nameOfUser}}' required></td>
-                                            {{/with}}
-                                          {{else}}
+
+                                          {{#if isEmpty getUserProfile}}
                                             <!-- Safeguard against error in user creation, resulting in user profile not created successfully.-->
-                                            <td><input type="text" name="userName" id="userName" placeholder="Enter Your Name" value='New User' required></td>
+                                            <td><input type="text" name="userName" id="userName" placeholder="Enter Your Name" value='New User Profile' required></td>
+                                          {{else}}
+                                            {{#with getUserProfile}}
+                                                <td><input type="text" name="userName" id="userName" placeholder="Enter Your Name" value='{{nameOfUser}}' required></td>
+                                            {{/with}}
                                           {{/if}}
                                         </tr>
                                         <tr>
