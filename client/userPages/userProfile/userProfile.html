@@ -31,9 +31,14 @@
                                       <table>
                                         <tr>
                                           <td><label for = "name">Name</label></td>
-                                          {{#with getUserProfile}}
-                                          <td><input type="text" name="userName" id="userName" placeholder="Enter Your Name" value='{{nameOfUser}}' required></td>
-                                          {{/with}}
+                                          {{#if getUserProfile}}
+                                            {{#with getUserProfile}}
+                                              <td><input type="text" name="userName" id="userName" placeholder="Enter Your Name" value='{{nameOfUser}}' required></td>
+                                            {{/with}}
+                                          {{else}}
+                                            <!-- Safeguard against error in user creation, resulting in user profile not created successfully.-->
+                                            <td><input type="text" name="userName" id="userName" placeholder="Enter Your Name" value='New User' required></td>
+                                          {{/if}}
                                         </tr>
                                         <tr>
                                           <td><label for = "year of study">Year of Study</label></td>
