@@ -5,9 +5,10 @@ let closeModal = () => {
   $( '.modal-backdrop' ).fadeOut();
 };
 
-Template.registerHelper('equals',function(a,b){
-  return a === b;
+Template.calendar.onCreated( () => {
+  Meteor.subscribe('getEvents');
 });
+
 
 Template.addEditEventModal.helpers({
   modalType( type ) {
@@ -43,8 +44,10 @@ Template.addEditEventModal.helpers({
   isEventOwner: function(){
     let eventModal = Session.get( 'eventModal' );
     var eventId = eventModal.event;
+
     var checkOwner = Events.findOne({_id: eventId});
     var owner = checkOwner && checkOwner.createdBy;
+
 
     if(owner === Meteor.userId()){
       return true;
@@ -128,17 +131,6 @@ Template.addEditEventModal.events({
           closeModal();
         }
       });
-
-
-          $('#add-edit-event-modal').on('hidden.bs.modal', function (e) {
-            $(this)
-              .find("input,textarea,select")
-                 .val('')
-                 .end()
-              .find("input[type=checkbox], input[type=radio]")
-                 .prop("checked", "")
-                 .end();
-          });
     }
   } //close 'click .delete-event'
 });

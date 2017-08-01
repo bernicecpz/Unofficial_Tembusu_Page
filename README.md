@@ -1,4 +1,5 @@
 # The Unofficial Tembusu Page
+Beyond Milestone 3: Attempting to resolve bugs within codes.  
 23 July 2017: Implementation of permissions for events, including tweaks to design and loading processes.  
 17 July 2017: Integration of 2 main features, dashboard + search function.  
 26 June 2017: Integration with Calendar  
@@ -34,6 +35,7 @@ Enter the following commands in order :
 + npm shrinkwrap is used in case of any packages that have a dependency of jquery 3, which may cause error of incompatability for twbs:bootstrap.   
 + Depreciation warning for moment date format, need to change to __supported ISO8601 forms__, with anything else needing to be a __format string__.
   - Refer here for the known formats: http://momentjs.com/docs/#/parsing/string/
+  - Update, 29 July 2017: Will retain the current format of the time and date, as it fits our needs for our calendar feature
 
 
 # Resolved Issues
@@ -41,7 +43,7 @@ Enter the following commands in order :
 + Need to find a way to export the collections from MongoDB. [RESOLVED]
 + "compatability" folder containing bootstrap-less has been removed to resolve its incompatability with admin-lte.[RESOLVED]
 + Add in appropriate permissions that do not allow other users to make changes to other events/announcement/misc unless it's their own. [RESOLVED]
-+ Make footer to stay down regardless of content
++ Search loading infinitely during the first-time load. Modified parameter in the helpers that is linked to retrieving data from MongoDB. [RESOLVED]
 
 # Meteor packages used
 To find out about the packages version and description, use command - "__meteor list__"  

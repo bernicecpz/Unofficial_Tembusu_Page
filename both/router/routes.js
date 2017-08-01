@@ -302,5 +302,9 @@ Router.route('/search',{
       }else{
         this.render('main');
       }
-    }
+    },
+    waitOn: function(){
+      return Meteor.subscribe('getEvents');
+    },
+    fastRender: true
 });
