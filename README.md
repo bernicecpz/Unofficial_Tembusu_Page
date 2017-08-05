@@ -1,5 +1,6 @@
 # The Unofficial Tembusu Page
 02 August 2017: Deployed the web application through Scalingo
+  - To push changes to production environment: __git push scalingo master__  
 01 August 2017: Include safeguard for user profile in the case where an user profile is not created successfully during user creation.  
 Beyond Milestone 3: Attempting to resolve bugs within codes.  
 23 July 2017: Implementation of permissions for events, including tweaks to design and loading processes.  
