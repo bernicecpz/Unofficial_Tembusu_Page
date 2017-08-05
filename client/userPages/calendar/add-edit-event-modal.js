@@ -41,7 +41,7 @@ Template.addEditEventModal.helpers({
     }
   },
 
-  isEventOwner: function(){
+  isEventOwner: function(event){
     let eventModal = Session.get( 'eventModal' );
     var eventId = eventModal.event;
 

@@ -1,3 +1,5 @@
+
+
 html {
     overflow: scroll;
     overflow-x: hidden;
@@ -46,6 +48,7 @@ body {
 input {
   display: inline-block;
   width: 300px;
+  max-width:100%;
   border-radius: 5px;
   margin-bottom: -1px;
   padding-right: 5px;
@@ -163,4 +166,8 @@ th, td {
 
 p[class="date pull-right"]{
   color: black;
+}
+
+a{
+  color:white;
 }

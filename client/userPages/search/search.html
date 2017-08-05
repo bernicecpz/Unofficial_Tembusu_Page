@@ -26,20 +26,14 @@
         {{#if searching}}
           {{> spinner}}
         {{else}}
-          {{#with events}}
           {{#each events}}
             <li class="list-group-item clearfix">
               <span class="pull-left"><strong>{{title}}</strong> at {{location}} from <i>{{start}} - {{end}}</i></span>
               <span class="pull-right">{{type}}</span>
             </li>
           {{else}}
-            {{#if events.count}}
               <p class="alert alert-warning">Nothing found for {{query}}.</p>
-            {{else}}
-              <p class="alert alert-warning">There is currently no event.</p>
-            {{/if}}
           {{/each}}
-          {{/with}}
         {{/if}}
       </ul>
 

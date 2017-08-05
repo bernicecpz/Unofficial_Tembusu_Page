@@ -85,6 +85,7 @@ if(Meteor.isServer) {
           //Generate randomPassword that is unique
           var randomPassword = Random.id();
           const userId = Accounts.createUser({email: email, password: randomPassword});
+          Accounts.sendEnrollmentEmail(userId);
 
           //Create a role for user based on their pre-assignment
           Roles.addUserToRoles(userId, accType);
@@ -97,7 +98,6 @@ if(Meteor.isServer) {
             house: "Not Set" //Default value till user change
           };
 
-
           Meteor.call('addUserProfile',userProfile, function(error,result){
             if(error){
               console.log("Server: User Profile is not created successfully.");
@@ -107,8 +107,6 @@ if(Meteor.isServer) {
             }
           });
 
-
-          Accounts.sendEnrollmentEmail(userId);
           console.log("Server: User Creation Success");
       }else{
           console.log("Server: User Creation Fail");
@@ -140,6 +138,7 @@ if(Meteor.isServer) {
       if(list.length == 0){
         //Empty, all password rules met
         console.log("All password conditions are met.");
+        return string;
       }else{
         for (var index = 0; index < list.length; index++){
             switch(list[index]){

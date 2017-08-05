@@ -137,10 +137,11 @@ if(Meteor.isClient){
             Accounts.resetPassword(Session.get('enrollAccountToken'), pwd, function(error) {
               if (error) {
                   if (error.message === 'Token expired [403]') {
+
                     Session.set('alert', 'This link has expired.');
                     Bert.alert("This link has expired.",'danger');
-
                     Router.go('/enrollmentFail');
+
                   } else {
                     //Session.set('alert', 'There was a problem setting your password.');
                     Bert.alert("There was a problem setting your password.",'danger');
@@ -150,12 +151,13 @@ if(Meteor.isClient){
                 //  Session.set('alert', 'Your password has been changed.');  // This doesn't show. Display on next page
                   Bert.alert("Your password has been changed.",'success');
                   Session.set('enrollAccountToken', '');
+                  Router.go('/enrollmentSuccess');
 
                   // Call done before navigating away from here
                   if (doneCallback) {
                     doneCallback();
                   }
-                  Router.go('/enrollmentSuccess');
+
               }
             });
 

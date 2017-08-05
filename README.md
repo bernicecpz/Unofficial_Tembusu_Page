@@ -1,4 +1,5 @@
 # The Unofficial Tembusu Page
+02 August 2017: Deployed the web application through Scalingo
 01 August 2017: Include safeguard for user profile in the case where an user profile is not created successfully during user creation.  
 Beyond Milestone 3: Attempting to resolve bugs within codes.  
 23 July 2017: Implementation of permissions for events, including tweaks to design and loading processes.  
@@ -20,11 +21,17 @@ Enter the following commands in order :
   - To know which database you are using, enter "db" into the database. "meteor" is the default database.  
 
 # Backing up the database steps
-+ Always export emails, UserProfiles and users
++ Always export emails
+  - UserProfiles and Users are good to have, for convenience. But if taking into perspective as to the app is being first used, the administrator would minimally requires the emails of the Tembusu members.
 + To export existing collection, use the following command:
   - __"mongoexport --host=[address:port] /d [database name] /c [collection name] /o [JSON filename]"__ (For Windows)
   - __"mongoexport --host [address:port] --db [database name] --collection [collection name] --output [JSON filename]"__ (For Linux/Unix)
 + Currently, all the json files have been consolidated into the folder named, "DB import collections".
+
+
+#Potential Add-ons:
++ Include device detection to make the web application to be mobile friendly. Suggestion: mystor:device-detection  
+
 
 # Area(s) to note
 + Currently, the sandbox domain is used for the SMTP. As such, only authorized recipients will be able to use the sandbox domain provided by Mailgun.
@@ -37,7 +44,8 @@ Enter the following commands in order :
 + Depreciation warning for moment date format, need to change to __supported ISO8601 forms__, with anything else needing to be a __format string__.
   - Refer here for the known formats: http://momentjs.com/docs/#/parsing/string/
   - Update, 29 July 2017: Will retain the current format of the time and date, as it fits our needs for our calendar feature
-+ "Half hour delay": Realized that the 30 minutes increase in timing under the listWeek view was caused by the padding of the event container as implemented in CSS. Changes have been made to accommodated to the event container size restraint. 
+
+
 
 # Resolved Issues
 + The end date in the calendar is exclusive. As such, there is a need to select 1 more day in order to be able to display the intended date. Need to find an allDay option to apply to dynamic events, since allDay seems to can only be set in static individual events. [RESOLVED]
@@ -45,50 +53,55 @@ Enter the following commands in order :
 + "compatability" folder containing bootstrap-less has been removed to resolve its incompatability with admin-lte.[RESOLVED]
 + Add in appropriate permissions that do not allow other users to make changes to other events/announcement/misc unless it's their own. [RESOLVED]
 + Search loading infinitely during the first-time load. Modified parameter in the helpers that is linked to retrieving data from MongoDB. [RESOLVED]
++ "Half hour delay": Realized that the 30 minutes increase in timing under the listWeek view was caused by the padding of the event container as implemented in CSS. Changes have been made to accommodated to the event container size restraint. [RESOLVED]
++ Revisit enrollment process, especially at the setting password. It takes too long to load. [RESOLVED]
+  - Discovered return value was not included in success condition, resulting in infinite loading.
 
 # Meteor packages used
 To find out about the packages version and description, use command - "__meteor list__"  
-accounts-base                         
-accounts-password                     
-aldeed:collection2                    
-aldeed:simple-schema                  
-blaze-html-templates                  
-check                                 
-cunneen:mailgun                       
-dangrossman:bootstrap-daterangepicker
-ecmascript                            
-ejson                                 
-email                                 
-es5-shim                              
-fullcalendar:fullcalendar             
-huttonr:bootstrap3                    
-huttonr:bootstrap3-assets             
-iron:controller                       
-iron:core                             
-iron:dynamic-template                 
-iron:layout                           
-iron:location                         
-iron:router                           
-iron:url                              
-joeinnes:meteor-autolinker            
-jquery                                
-less                                  
-meteor-base                           
-mobile-experience                     
-momentjs:moment                       
-mongo                                 
-natestrauser:filepicker-plus          
-nicolaslopezj:roles                   
-random                                
-reactive-dict                         
-reactive-var                          
-redaty:admin-lte                      
-session                               
-shell-server                          
-standard-minifier-css                 
-standard-minifier-js                  
-templating                            
-themeteorchef:bert                    
-themeteorchef:jquery-validation       
-tracker                               
-twbs:bootstrap                                  
+accounts-base                          
+accounts-password                      
+aldeed:collection2                     
+aldeed:simple-schema                   
+blaze-html-templates                   
+check                                  
+cunneen:mailgun                        
+dangrossman:bootstrap-daterangepicker  
+ecmascript                             
+ejson                                  
+email                                  
+es5-shim                               
+fullcalendar:fullcalendar              
+huttonr:bootstrap3                     
+huttonr:bootstrap3-assets              
+iron:controller                        
+iron:core                              
+iron:dynamic-template                  
+iron:layout                            
+iron:location                          
+iron:router                            
+iron:url                               
+joeinnes:meteor-autolinker             
+jquery                                 
+less                                   
+meteor-base                            
+meteorhacks:fast-render                
+mobile-experience                      
+momentjs:moment                        
+mongo                                  
+natestrauser:filepicker-plus           
+nicolaslopezj:roles                    
+random                                 
+reactive-dict                          
+reactive-var                           
+redaty:admin-lte                       
+sacha:spin                             
+session                                
+shell-server                           
+standard-minifier-css                  
+standard-minifier-js                   
+templating                             
+themeteorchef:bert                     
+themeteorchef:jquery-validation        
+tracker                                
+twbs:bootstrap                                            
