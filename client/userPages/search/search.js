@@ -2,7 +2,7 @@ Template.search.onCreated( () => {
   let template = Template.instance();
 
   template.searchQuery = new ReactiveVar();
-  template.searching   = new ReactiveVar( false );
+  template.searching   = new ReactiveVar(true);
 
   template.autorun( () => {
     template.subscribe( 'events', template.searchQuery.get(), () => {
@@ -11,7 +11,9 @@ Template.search.onCreated( () => {
       }, 300 );
     });
   });
+
 });
+
 
 Template.search.helpers({
   searching() {
@@ -40,5 +42,6 @@ Template.search.events({
     if ( value === '' ) {
       template.searchQuery.set( value );
     }
+
   }
 });

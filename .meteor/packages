@@ -28,8 +28,6 @@ check@1.2.5
 themeteorchef:jquery-validation
 less@2.7.9
 redaty:admin-lte
-huttonr:bootstrap3
-huttonr:bootstrap3-assets
 iron:controller
 iron:dynamic-template
 iron:core

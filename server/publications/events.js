@@ -2,7 +2,6 @@
 
 Meteor.publish( 'events', function( search ) {
   check( search, Match.OneOf( String, null, undefined ) );
-  console.log("Inside Search: After check()");
   let query      = {},
       projection = { limit: 10, sort: { title: 1 } };
 
@@ -20,12 +19,6 @@ Meteor.publish( 'events', function( search ) {
 
     projection.limit = 100;
   }
-  console.log("Inside Search: After regex matching");
-
-  var retrieve = Events.find( query, projection );
-
-  console.log("Check values: " + retrieve);
-
-    return retrieve;
+    return Events.find( query, projection );
 
 });

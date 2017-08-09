@@ -39,7 +39,7 @@ Template.calendar.onRendered( () => {
         eventLimit: 3
       }
     },
-    aspectRatio: 2,
+
     events: function(start, end, timezone, callback) {
       callback(Events.find().fetch());
     }, //close 'events'
@@ -47,8 +47,8 @@ Template.calendar.onRendered( () => {
     eventRender: function(event, element) {
       element.find( '.fc-content' ).html(
         `<input type="hidden" name="id" value='${event._id}'>
-         <h4><strong><i><u>${ event.title }</u></i></strong></h4>
-         <p class="type-time"><strong>${ moment(event.start.toISOString()).format("hh:mm a") } - ${ moment(event.end.toISOString()).format("hh:mm a") }</strong></p>
+         <h4><strong>${ event.title }</strong></h4>
+         <p class="type-time">${ moment(event.start.toISOString()).format("hh:mm a") } - ${ moment(event.end.toISOString()).format("hh:mm a") }</p>
          <p class="type-${ event.type }">#${ event.type }</p>
         `
       );

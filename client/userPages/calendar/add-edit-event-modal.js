@@ -43,11 +43,12 @@ Template.addEditEventModal.helpers({
 
   isEventOwner: function(event){
     let eventModal = Session.get( 'eventModal' );
-    var eventId = eventModal.event;
 
-    if(typeof eventId === "undefined" ){
-      return false
+
+    if(typeof eventModal.event === "undefined" ){
+      return false;
     }else{
+      var eventId = eventModal.event;
       var checkOwner = Events.findOne({_id: eventId});
       var owner = checkOwner && checkOwner.createdBy;
 
