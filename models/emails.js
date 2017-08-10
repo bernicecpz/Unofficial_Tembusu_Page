@@ -2,7 +2,7 @@ import { Mongo } from 'meteor/mongo';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
 //Retrieve from DB and store into their respective variables
-Emails = new Mongo.Collection('emails');
+export const Emails = new Mongo.Collection('emails');
 
 Emails.allow({
   insert: () => false,
