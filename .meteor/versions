@@ -19,7 +19,6 @@ caching-compiler@1.1.9
 caching-html-compiler@1.1.2
 callback-hook@1.0.10
 check@1.2.5
-chuangbo:cookie@1.1.0
 cunneen:mailgun@0.9.1
 dangrossman:bootstrap-daterangepicker@2.1.13
 dburles:collection-helpers@1.0.4
@@ -67,10 +66,6 @@ logging@1.1.17
 mdg:validation-error@0.5.1
 meteor@1.7.0
 meteor-base@1.1.0
-meteorhacks:fast-render@2.16.0
-meteorhacks:inject-data@2.0.0
-meteorhacks:meteorx@1.4.1
-meteorhacks:picker@1.0.3
 minifier-css@1.2.16
 minifier-js@2.1.1
 minimongo@1.2.1

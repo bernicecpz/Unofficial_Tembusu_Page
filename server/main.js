@@ -12,6 +12,7 @@ Meteor.startup(() => {
   //Connect to SMTP provider Mailgun
   process.env.MAIL_URL ="smtp://postmaster%40sandboxc2e4ac085a614018b45c9188467e4bda.mailgun.org:unofficialTembusu@smtp.mailgun.org:587";
 
+
   // Code to run on server at startup
   Meteor.publish('getEmails',function(){
     return Emails.find({});
@@ -134,7 +135,7 @@ if(Meteor.isServer) {
 
     //Check that the password fulfill the password rules, will return error message if any
     pwdValidationMsg: function(list){
-      var error, string=""; //Append to errors together
+      var error, string="", noError=""; //Append to errors together
       if(list.length == 0){
         //Empty, all password rules met
         console.log("All password conditions are met.");

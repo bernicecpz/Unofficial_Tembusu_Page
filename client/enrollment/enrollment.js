@@ -126,13 +126,11 @@ if(Meteor.isClient){
 
         Meteor.call('pwdValidationMsg',list, result_callback);
         function result_callback(error,element){
-          if(element){
+          if(error){
             //Means there is error
             Bert.alert(element);
           }else{
             //Password has been validated
-            //console.log("validation pass");
-
             //Set the password for the user for the first time, user will be logged immediately
             Accounts.resetPassword(Session.get('enrollAccountToken'), pwd, function(error) {
               if (error) {
