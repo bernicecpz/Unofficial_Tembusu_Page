@@ -291,9 +291,11 @@ Router.route('/search',{
     data: function(){
       var currentUser = Meteor.userId();
     },
+
     onRun: function(){
       this.next();
     },
+
     onBeforeAction: function(){
       var currentUser = Meteor.userId();
       if(currentUser){

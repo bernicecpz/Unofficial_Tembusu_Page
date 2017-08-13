@@ -29,6 +29,7 @@ import validator from 'validator';
       var lEmail = (event.target.lEmail.value).toLowerCase();
       var lPwd = event.target.lpassword.value
       //Login to dashboard
+      
       Meteor.loginWithPassword(lEmail, lPwd,function(err){
         if(Meteor.user()){
           //Router.go('/dashboard');

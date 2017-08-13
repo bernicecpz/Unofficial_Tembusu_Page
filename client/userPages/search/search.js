@@ -1,4 +1,8 @@
+
+
+
 Template.search.onCreated( () => {
+  
   let template = Template.instance();
 
   template.searchQuery = new ReactiveVar();
@@ -10,10 +14,11 @@ Template.search.onCreated( () => {
         template.searching.set( false );
       }, 300 );
     });
+
   });
 
-});
 
+});
 
 Template.search.helpers({
   searching() {
@@ -37,6 +42,7 @@ Template.search.events({
     if ( value !== '' && event.keyCode === 13 ) {
       template.searchQuery.set( value );
       template.searching.set( true );
+
     }
 
     if ( value === '' ) {

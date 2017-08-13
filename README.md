@@ -31,7 +31,8 @@ Enter the following commands in order :
 
 
 #Potential Add-ons:
-+ Include device detection to make the web application to be mobile friendly. Suggestion: mystor:device-detection  
++ Include device detection to make the web application to be mobile friendly. Suggestion: mystor:device-detection
++ Include filepicker-plus such that user can customized their user profiles picture.
 
 
 # Area(s) to note
@@ -48,7 +49,7 @@ Enter the following commands in order :
 
 
 
-# Resolved Issues
+# Resolved Issues/ Updates
 + The end date in the calendar is exclusive. As such, there is a need to select 1 more day in order to be able to display the intended date. Need to find an allDay option to apply to dynamic events, since allDay seems to can only be set in static individual events. [RESOLVED]
 + Need to find a way to export the collections from MongoDB. [RESOLVED]
 + "compatability" folder containing bootstrap-less has been removed to resolve its incompatability with admin-lte.[RESOLVED]
@@ -57,6 +58,8 @@ Enter the following commands in order :
 + "Half hour delay": Realized that the 30 minutes increase in timing under the listWeek view was caused by the padding of the event container as implemented in CSS. Changes have been made to accommodated to the event container size restraint. [RESOLVED]
 + Revisit enrollment process, especially at the setting password. It takes too long to load. [RESOLVED]
   - Discovered return value was not included in success condition, resulting in infinite loading.
++ Included temporary fix (13 Aug 2017) to remove all previous login tokens
++ Included temporary fix to reload at first time
 
 # Meteor packages used
 To find out about the packages version and description, use command - "__meteor list__"  

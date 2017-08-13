@@ -12,7 +12,6 @@ Meteor.startup(() => {
   //Connect to SMTP provider Mailgun
   process.env.MAIL_URL ="smtp://postmaster%40sandboxc2e4ac085a614018b45c9188467e4bda.mailgun.org:unofficialTembusu@smtp.mailgun.org:587";
 
-
   // Code to run on server at startup
   Meteor.publish('getEmails',function(){
     return Emails.find({});
@@ -70,6 +69,13 @@ if(Meteor.isServer) {
   Meteor.methods({
     //Check if this email already has an user account tied to it.
     //DO NOT communicate with the users database directly, var emailEnrolled = users.findOne({email: rEmail});
+
+
+    removeAllLoginToken: function(){
+      //Temporary fix to prevent the accumulation of login tokens, forces all users to log out
+      //Prevent attackers to use oldTokens to impersonate users
+      return Meteor.users.update({}, {$set: {'services.resume.loginTokens': []}}, {multi: true});
+    },
 
     //Accounts
     findUserByEmail : function(email){
