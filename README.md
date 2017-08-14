@@ -75,9 +75,7 @@ ecmascript
 ejson                                  
 email                                  
 es5-shim                               
-fullcalendar:fullcalendar              
-huttonr:bootstrap3                     
-huttonr:bootstrap3-assets              
+fullcalendar:fullcalendar                        
 iron:controller                        
 iron:core                              
 iron:dynamic-template                  

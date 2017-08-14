@@ -42,7 +42,6 @@ fortawesome:fontawesome@4.7.0
 fourseven:scss@4.5.0
 fullcalendar:fullcalendar@2.9.0
 geojson-utils@1.0.10
-handlebars@1.0.7
 hot-code-push@1.0.4
 html-tools@1.0.11
 htmljs@1.0.11
@@ -76,7 +75,6 @@ modules-runtime@0.8.0
 momentjs:moment@2.18.1
 mongo@1.1.19
 mongo-id@1.0.6
-natestrauser:filepicker-plus@2.0.0
 nicolaslopezj:roles@2.6.4
 npm-bcrypt@0.9.3
 npm-mongo@2.2.24
