@@ -59,7 +59,6 @@ Enter the following commands in order :
 + Revisit enrollment process, especially at the setting password. It takes too long to load. [RESOLVED]
   - Discovered return value was not included in success condition, resulting in infinite loading.
 + Included temporary fix (13 Aug 2017) to remove all previous login tokens
-+ Included temporary fix to reload at first time
 
 # Meteor packages used
 To find out about the packages version and description, use command - "__meteor list__"  
@@ -75,9 +74,7 @@ ecmascript
 ejson                                  
 email                                  
 es5-shim                               
-fullcalendar:fullcalendar              
-huttonr:bootstrap3                     
-huttonr:bootstrap3-assets              
+fullcalendar:fullcalendar                          
 iron:controller                        
 iron:core                              
 iron:dynamic-template                  
