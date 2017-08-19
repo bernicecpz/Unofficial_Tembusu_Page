@@ -126,7 +126,7 @@ if(Meteor.isClient){
 
         Meteor.call('pwdValidationMsg',list, result_callback);
         function result_callback(error,element){
-          if(error){
+          if(element.length != 0){
             //Means there is error
             Bert.alert(element);
           }else{

@@ -43,9 +43,9 @@ if(Meteor.isClient){
 
   Template.registerHelper('isEmpty',function(a){
     if(a == "undefined"){
-      return false;
-    }else{
       return true;
+    }else{
+      return false;
     }
   });
 
@@ -144,7 +144,7 @@ if(Meteor.isClient){
 
       //Getting the id for the userProfile
       var getUserProfile = UserProfiles.findOne({email:email});
-        console.log("Check: " + getUserProfile);
+
         if(typeof getUserProfile === "undefined"){
           //Create the item
           let userProfile = {
@@ -186,7 +186,7 @@ if(Meteor.isClient){
 
     },
 
-    'submit #changePassword-form': function(){
+    'submit #changePassword-form': function(event,template){
       event.preventDefault();
       var getOldPwd = event.target.oldPassword.value;
       var getNewPwd = event.target.npassword.value;
@@ -204,10 +204,13 @@ if(Meteor.isClient){
                 Bert.alert("Password is not changed successfully. Invalid password", 'danger');
               }else{
                 Bert.alert("Password is changed successfully.", 'success');
+                template.find("#changePassword-form").reset();
               }
             });
         }
       }
+
+
     },
 
     'click #seeMoreAnn': function(){

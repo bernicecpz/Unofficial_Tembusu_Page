@@ -1,13 +1,13 @@
-
-
 html {
     overflow: scroll;
     overflow-x: hidden;
+    height: 100%;
 }
 
 body {
   background: #00a65a;
   font-family: 'Lato', sans-serif;
+  height: 100%;
 }
 
 .header {
@@ -25,11 +25,7 @@ body {
   text-align: center;
   color: white;
 }
-/*
-.wrapper{
-  padding: 0 0 0px;
-  position: relative;
-}*/
+
 
 .content{
   display: flex;
@@ -171,4 +167,8 @@ p[class="date pull-right"]{
 
 a{
   color:white;
+}
+
+a[class="add"]{
+  color:black;
 }

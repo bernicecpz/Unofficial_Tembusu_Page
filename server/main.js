@@ -67,9 +67,6 @@ Roles.registerAction('miscPosts.remove');
 
 if(Meteor.isServer) {
   Meteor.methods({
-    //Check if this email already has an user account tied to it.
-    //DO NOT communicate with the users database directly, var emailEnrolled = users.findOne({email: rEmail});
-
 
     removeAllLoginToken: function(){
       //Temporary fix to prevent the accumulation of login tokens, forces all users to log out
@@ -78,6 +75,8 @@ if(Meteor.isServer) {
     },
 
     //Accounts
+    //Check if this email already has an user account tied to it.
+    //DO NOT communicate with the users database directly, var emailEnrolled = users.findOne({email: rEmail});
     findUserByEmail : function(email){
       const userEmail = Accounts.findUserByEmail(email);
       return userEmail;
@@ -141,12 +140,7 @@ if(Meteor.isServer) {
 
     //Check that the password fulfill the password rules, will return error message if any
     pwdValidationMsg: function(list){
-      var error, string="", noError=""; //Append to errors together
-      if(list.length == 0){
-        //Empty, all password rules met
-        console.log("All password conditions are met.");
-        return string;
-      }else{
+      var error, string=""; //Append to errors together
         for (var index = 0; index < list.length; index++){
             switch(list[index]){
               case "min":
@@ -176,10 +170,10 @@ if(Meteor.isServer) {
               string += "\n" + error;
             }
         }
-      }
 
       return string;
     },
+
 
   }); //End of Meteor.methods Braces
 

@@ -49,7 +49,7 @@
                                                     <option disabled="disabled" selected="selected">{{yearOfStudy}}</option>
                                                   {{/with}}
 
-                                                  <option disabled="disabled" selected="selected">Please Select</option>
+                                                 <!--  <option disabled="disabled" selected="selected">Please Select</option> -->
                                                   {{#each yearOfStudyOptions}}
                                                     <option name="option" value="{{this}}">{{this}}</option>
                                                   {{/each}}
@@ -57,14 +57,14 @@
                                           </td>
                                         </tr>
                                         <tr>
-                                          <td><label for = "confirmNewPassword">House</label></td>
+                                          <td><label for = "house">House</label></td>
                                           <td>
                                               <select id="dropdown-hse" name="dropdown" required>
                                                   {{#with getUserProfile}}
                                                     <option disabled="disabled" selected="selected">{{house}}</option>
                                                   {{/with}}
 
-                                                  <option disabled="disabled" selected="selected">Please Select</option>
+                                                  <!--  <option disabled="disabled" selected="selected">Please Select</option> -->
                                                   {{#each houseOptions}}
                                                     <option name="option" value="{{this}}">{{this}}</option>
                                                   {{/each}}
@@ -156,7 +156,7 @@
                                             </div> <!-- /.box-block -->
                                           {{/each}}
                                           {{else}}
-                                            You do not have make announcements previously. Go and make an anouncement now!
+                                            You do not have make announcements previously. <a href="{{pathFor route='announcement'}}" class="add">Go add one now!</a>
                                           {{/if}}
                                       {{/with}}
                                   </div>
@@ -211,7 +211,7 @@
                                             </div> <!-- /.box-block -->
                                           {{/each}}
                                           {{else}}
-                                            You have no posts. Go and post one now!
+                                            You have no posts. <a href="{{pathFor route='misc'}}" class="add">Go add one now!</a>
                                           {{/if}}
                                       {{/with}}
                                   </div>

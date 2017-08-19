@@ -48,7 +48,6 @@ Enter the following commands in order :
   - Update, 29 July 2017: Will retain the current format of the time and date, as it fits our needs for our calendar feature
 
 
-
 # Resolved Issues/ Updates
 + The end date in the calendar is exclusive. As such, there is a need to select 1 more day in order to be able to display the intended date. Need to find an allDay option to apply to dynamic events, since allDay seems to can only be set in static individual events. [RESOLVED]
 + Need to find a way to export the collections from MongoDB. [RESOLVED]
