@@ -44,13 +44,11 @@ Template.addEditEventModal.helpers({
   isEventOwner: function(){
     let eventModal = Session.get( 'eventModal' );
 
-    if(typeof eventModal === "undefined" ){
-      return false;
-    }else{
-      var eventId = eventModal._id;
-      var checkOwner = Events.findOne({_id: eventId});
-      var owner = checkOwner && checkOwner.createdBy;
-
+      if(typeof eventModal != undefined){
+        var eventId = eventModal.event;
+        var checkOwner = Events.findOne({_id: eventId});
+        var owner = checkOwner && checkOwner.createdBy;
+      }
 
       if(owner === Meteor.userId()){
         return true;
@@ -59,7 +57,8 @@ Template.addEditEventModal.helpers({
       }
     }
 
-  }
+
+
 });
 
 //Single Date Picker, standardized the format as stored inside the datebase
@@ -124,6 +123,7 @@ Template.addEditEventModal.events({
 
   }, //close 'submit form'
   'click .delete-event' ( event, template ) {
+
     let eventModal = Session.get( 'eventModal' );
 
     if ( confirm( 'Are you sure? This is permanent.' ) ) {

@@ -1,8 +1,5 @@
-
-
-
 Template.search.onCreated( () => {
-  
+
   let template = Template.instance();
 
   template.searchQuery = new ReactiveVar();

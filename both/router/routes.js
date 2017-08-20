@@ -6,6 +6,7 @@ import { Meteor } from 'meteor/meteor';
 Note to self: Router.map seems to be depreciated methods
 */
 
+
 //Main Page
 Router.route('/',function(){
   this.render('main')
