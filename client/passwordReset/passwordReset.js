@@ -91,9 +91,12 @@ if(Meteor.isClient){
             //If user can't be found
             //User will return the entire user
             if(user){
-              Accounts.forgotPassword(email, function(error){
+              options = {};
+              options.email = email;
+              Accounts.forgotPassword(options, function(error){
                 if(error){
-                  console.log(error);
+                  Bert.alert("Please provide a valid password.",'warning');
+                  Router.go('/resetPassword');
                 }else{
                   Router.go('/passwordResetSuccess');
                 }
@@ -126,36 +129,27 @@ if(Meteor.isClient){
             Bert.alert(element,'warning');
           }else{
             //Password has been validated
-            //console.log("validation pass");
 
             //Set the password for the user for the first time, user will be logged immediately
             Accounts.resetPassword(Session.get('resetPasswordToken'), pwd, function(error) {
               if (error) {
                   if (error.message === 'Token expired [403]') {
-                    Session.set('alert', 'This link has expired.');
                     Bert.alert("This link has expired.",'danger');
-
-
                     Router.go('/passwordResetFail');
                   } else {
-                    Session.set('alert', 'There was a problem setting your password.');
                     Bert.alert("There was a problem setting your password. Please try again.",'danger');
-
-
                     Router.go("/passwordResetFail");
                   }
               } else {
-                  Session.set('alert', 'Password has been reset.');  // This doesn't show. Display on next page
                   Bert.alert("Password has been reset.",'success')
                   Session.set('resetPasswordToken', '');
-
+                  Router.go('/');
                   // Call done before navigating away from here
                   if (doneCallback) {
                     doneCallback();
                   }
-
-                  Router.go('/');
               }
+
             });
           }
         }

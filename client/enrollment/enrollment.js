@@ -128,7 +128,7 @@ if(Meteor.isClient){
         function result_callback(error,element){
           if(element.length != 0){
             //Means there is error
-            Bert.alert(element);
+            Bert.alert(element,'warning');
           }else{
             //Password has been validated
             //Set the password for the user for the first time, user will be logged immediately
