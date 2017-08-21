@@ -91,11 +91,10 @@ if(Meteor.isClient){
             //If user can't be found
             //User will return the entire user
             if(user){
-              console.log("Found user by email");
 
               var options = {};
               options.email = email;
-              Accounts.forgotPassword(options, function(error){
+              Accounts.forgotPassword(options.email, function(error){
                 if(error){
                   console.log(error);
                 }else{

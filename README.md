@@ -30,10 +30,11 @@ Enter the following commands in order :
 + Currently, all the json files have been consolidated into the folder named, "DB import collections".
 
 
-#Potential Add-ons:
+#Potential Add-ons/Modifications:
 + Include device detection to make the web application to be mobile friendly. Suggestion: mystor:device-detection
 + Include filepicker-plus such that user can customized their user profiles picture.
-
++ Include email alias of NUS-assigned email, allow users to choose whichever email alias they prefer
++ Align the events to be editable/able to update in user profile page
 
 # Area(s) to note
 + Currently, the sandbox domain is used for the SMTP. As such, only authorized recipients will be able to use the sandbox domain provided by Mailgun.
