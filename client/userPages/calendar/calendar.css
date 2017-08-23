@@ -1,0 +1,60 @@
+/*.fc-event-container {
+  padding: 5px !important;
+}*/
+
+.fc-event {
+  padding: 3px 5px;
+  border-color: #ddd;
+  background: #96AC87 !important;
+}
+.fc-content {
+  color: #444;
+}
+
+h4,
+h5 {
+  margin: 0;
+  font-weight: normal;
+}
+
+h4 {
+  color: black;
+  font-size: 11px;
+  line-height: 15px;
+  white-space: normal;
+}
+
+h5 {
+  color: #888;
+  font-size: 12px;
+}
+
+p[class="tool"] {
+  color: #CFC59F;
+  font-size: 12px;
+}
+
+p[class^="type-"] {
+  margin: 0;
+}
+
+p[class="type-Interest Groups"] {
+  color: #e60000;
+  font-size: 9px;
+}
+
+p[class="type-Workshops"] {
+  color: green;
+  font-size: 9px;
+}
+
+p[class="type-Forums"] {
+  color: blue;
+  font-size: 9px;
+}
+
+
+p[class="type-time"]{
+  color:black;
+  font-size: 10px;
+}

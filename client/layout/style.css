@@ -1,0 +1,174 @@
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+    height: 100%;
+}
+
+body {
+  background: #00a65a;
+  font-family: 'Lato', sans-serif;
+  height: 100%;
+}
+
+.header {
+  font-size: 35px;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  text-align: center;
+  color: white;
+}
+
+.description {
+  font-size: 15px;
+  letter-spacing: 1px;
+  margin: -1px 0 25px;
+  text-align: center;
+  color: white;
+}
+
+
+.content{
+  display: flex;
+  min-height: 80vh;
+  flex-direction: column;
+  flex: 1;
+  background: #ECF0F5;
+}
+
+.main-footer {
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+input {
+  display: inline-block;
+  width: 300px;
+  max-width:100%;
+  border-radius: 5px;
+  margin-bottom: -1px;
+  padding-right: 5px;
+}
+
+option,#dropdown{
+  color:black;
+}
+
+#setPassword {
+  height: 44px;
+  background: #004d2a;
+  font-family: inherit;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  display: block;
+  border-radius: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom:15px;
+  border:none;
+  color: white;
+}
+
+#email,#password,#confirmPassword,#npassword,#rpassword,#rConfirmPassword{
+  font-size: 14px;
+  letter-spacing: 1px;
+  line-height: 1.3em;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom:15px;
+  color:black;
+}
+
+
+#submit:hover {
+  background: #008046;
+}
+
+#mainForm,#registerForm,#set-password-form,#reset-password-form,#loginForm,#enrollmentForm{
+  width: 550px;
+  margin: 10% auto;
+  margin-bottom: 3px;
+  display: block;
+  color: white;
+  font-family: inherit;
+  font-size: 14px;
+  text-align: center;
+}
+
+a.link,a:visited{
+  color: white;
+  text-decoration: none;
+}
+
+a:hover{
+  color:none;
+  text-decoration: none;
+}
+
+.error{
+   color: #ff0000;
+   font-size: 12px;
+}
+
+input:focus {
+  outline: none;
+  outline: 2px solid #E86C8D;
+  box-shadow: 0 0 2px #E86C8D;
+}
+
+
+.button {
+  width: 25%;
+  height: 44px;
+  background: #004d2a;
+  font-family: inherit;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  display: block;
+  border-radius: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom:15px;
+  border:none;
+  color: white;
+}
+
+.guest-count {
+  margin: 5px 0;
+}
+
+#add-announcement-form,#add-misc-post-form,#modify-announcement-form,#modify-miscPost-form{
+  width:80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+textarea{
+  resize: none;
+}
+
+#announcementBox,#miscPostBox,#upcomingEventBox{
+  color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+th, td {
+  padding: 15px;
+}
+
+p[class="date pull-right"]{
+  color: black;
+}
+
+
+a{
+  color:white;
+}
+
+a[class="add"]{
+  color:black;
+}

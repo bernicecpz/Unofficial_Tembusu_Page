@@ -1,0 +1,2 @@
+{"_id":"bn4cqWp92A8pugiZZ","createdAt":{"$date":"2017-07-22T18:27:34.250Z"},"services":{"password":{"bcrypt":"$2a$10$Vc7xDpD73YNMTNEpgmxSfep3oGAbcPvdxPbZymXy0zfxa0z6ABHbO"},"resume":{"loginTokens":[]}},"emails":[{"address":"testerorbital@gmail.com","verified":true}],"roles":["admin-user"]}
+

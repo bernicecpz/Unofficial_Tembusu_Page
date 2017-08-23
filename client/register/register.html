@@ -1,0 +1,28 @@
+<template name="register">
+  <form id="registerForm"> <!-- Meteor is intelligent enough to identify the template -->
+    <div class="header">
+      Welcome to The Unofficial Tembusu Page
+    </div>
+    <br />
+    <div class="description">
+      <label>You are a </label>
+        <select id="dropdown" name="dropdown" required>
+            <option disabled="disabled" selected="selected">Please Select</option>
+            {{#each options}}
+              <option name="option" value="{{this}}">{{this}}</option>
+            {{/each}}
+        </select>
+    </div>
+
+    <div class="description">
+      Please register with your NUS email address.
+    </div>
+    <input type="email" id="email" name="rEmail" placeholder="name@u.nus.edu" class="email" required>
+
+
+    <input type="submit" class="button" id="continue" value="CONTINUE">
+    <button id="back" class="button">BACK</button>
+
+
+  </form>
+</template>

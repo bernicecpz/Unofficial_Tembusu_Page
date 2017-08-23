@@ -1,0 +1,86 @@
+<template name="addEditEventModal">
+
+  <div class="modal fade" id="add-edit-event-modal" tabindex="-1" role="dialog" aria-labelledby="add-edit-event-modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="add-edit-event">{{modalLabel.label}} Event</h4>
+      </div>
+      <form id="add-edit-event-form">
+        <div class="modal-body">
+
+          <input type = "hidden" name="eventItem" id="eventItem" value="{{event._id}}">
+          <!-- Event Title -->
+          <div class="form-group">
+            <label for="title">Event Title</label>
+            <input type="text" name="title" class="form-control" value="{{event.title}}">
+          </div>
+
+          <div class="form-group">
+            <label for="title">Event Location</label>
+            <input type="text" name="location" class="form-control" value="{{event.location}}">
+          </div>
+
+          <div class="form-group">
+            <div class="row">
+
+              <!-- Event Type -->
+              <div class="col-xs-12 col-sm-4">
+                <label for="type">Event Type</label>
+                <select name="type" class="form-control">
+                  <option selected="{{selected event.type 'Interest Groups' }}" value="Interest Groups">Interest Groups</option>
+                  <option selected="{{selected event.type 'Workshops' }}" value="Workshops">Workshops</option>
+                  <option selected="{{selected event.type 'Forums' }}" value="Forums">Forums</option>
+                </select>
+              </div>
+
+              <!-- Event Start -->
+              <div class="col-xs-12 col-sm-3">
+                <label for="start">Event Starts</label>
+                <!-- <input disabled type="text" name="start" class="form-control" value="{{event.start}}"> -->
+                <input name="start" id="start" class="form-control" value="{{event.start}}"/>
+              </div>
+
+              <!-- Event End -->
+              <div class="col-xs-12 col-sm-3">
+                <label for="end">Event End</label>
+                <!-- <input disabled type="text" name="end" class="form-control" value="{{#if event.end}}{{event.end}}{{else}}{{event.start}}{{/if}}"> -->
+                <input name="end" id="end" class="form-control" value="{{event.end}}"/>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea type="text" name="description" class="form-control" rows="5" value="{{event.description}}"></textarea>
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+          {{#if modalType 'edit'}}
+            {{#if isEventOwner}}
+              <button class="btn btn-danger pull-left delete-event">Delete Event</button>
+            {{else}}
+              <button class="btn btn-danger pull-left delete-event" disabled><div rel="tooltip" title="You do not have permission to delete this event.">Delete Event</div></button>
+            {{/if}}
+          {{/if}}
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+
+          {{#if modalType 'add'}}
+              <button type="submit" class="btn btn-success edit-event">{{modalLabel.button}} Event</button>
+          {{else}}
+              {{#if isEventOwner}}
+                <button type="submit" class="btn btn-success edit-event">{{modalLabel.button}} Event</button>
+              {{else}}
+                <button type="submit" class="btn btn-success edit-event" disabled> <div rel="tooltip" title="You do not have permission to edit this event.">{{modalLabel.button}} Event</div></button>
+              {{/if}}
+          {{/if}}
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+</template>

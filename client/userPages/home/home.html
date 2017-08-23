@@ -1,0 +1,142 @@
+<template name="home">
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+        <section class="content-header">
+          <br />
+          <h1>
+            {{#with getUserProfile}}
+                Welcome back, {{nameOfUser}} !
+            {{/with}}
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="{{pathFor route='home'}}"><i class="fa fa-dashboard"></i>Home</a></li>
+          </ol>
+        </section>
+      <section class="content">
+
+      <div class="box-default">
+
+          <!-- Main content -->
+            <section class="content">
+              <!-- Apply any bg-* class to to the info-box to color it -->
+              <div class="row">
+                  <div class="col-md-4 col-xs-6 .col-md-4">
+                    <div class="info-box bg-aqua">
+                  	<span class="info-box-icon"><i class="glyphicon glyphicon-bullhorn"></i></span>
+                  	<div class="info-box-content">
+                  	  <span class="info-box-text">Announcements</span>
+                  	  <span class="info-box-number">{{all_ann_items.count}}</span>
+                  	</div><!-- /.info-box-content -->
+                    </div><!-- /.info-box -->
+                  </div><!-- /.col -->
+
+                  <div class="col-md-4 col-xs-6 .col-md-4">
+                    <div class="info-box bg-yellow">
+                  	<span class="info-box-icon"><i class="fa fa-comments"></i></span>
+                  	<div class="info-box-content">
+                  	  <span class="info-box-text">Miscellaneous</span>
+                  	  <span class="info-box-number">{{all_misc_items.count}}</span>
+                  	</div><!-- /.info-box-content -->
+                    </div><!-- /.info-box -->
+                  </div><!-- /.col -->
+                  <div class="col-md-4 col-xs-6 .col-md-4">
+                    <div class="info-box bg-green">
+                  	<span class="info-box-icon"><i class="fa fa-calendar"></i></span>
+                  	<div class="info-box-content">
+                  	  <span class="info-box-text">Events</span>
+                  	  <span class="info-box-number">{{all_event_items.count}}</span>
+                  	</div><!-- /.info-box-content -->
+                    </div><!-- /.info-box -->
+                  </div><!-- /.col -->
+              </div><!-- /.row -->
+
+
+              <div id = "announcementBox">
+                <!-- Box 1: Announcements -->
+                <div class="box box-solid bg-aqua">
+                  <div class="box-header with-border">
+                    <h3 class="box-title"><strong>Announcments</strong></h3>
+                    <div class="box-tools pull-right">
+                      <span class="label label-primary"><a href="{{pathFor route='announcement'}}" >See more @ Announcements View</a></span>
+                        <!-- <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button> -->
+                    </div><!-- /.box-tools -->
+                  </div>
+                  <div class="box-body">
+                    {{#with all_ann_items}}
+                      {{#if all_ann_items.count}}
+                          {{#each all_ann_items}}
+                            <div class="box box-solid bg-aqua">
+                              <div class="col-xs-12 col-md-8"><strong>{{title}}</strong></div>
+                              <div class="col-xs-6 col-md-4"><strong>{{date}}</strong></div>
+                            </div>
+                          {{/each}}
+                      {{else}}
+                        There are currently no events. Please check back later. Thank you!
+                      {{/if}}
+                    {{/with}}
+                  </div>
+                </div>
+              </div>
+
+              <div id="miscPostBox">
+                <!-- Box 2: Recently Added -->
+                <div class="box box-solid bg-yellow">
+                  <div class="box-header with-border">
+                    <h3 class="box-title"><strong>Miscellaneous</strong></h3>
+                    <div class="box-tools pull-right">
+                        <span class="label label-primary"><a href="{{pathFor route='misc'}}">See more @ Misc. Post View</a></span>
+                    </div><!-- /.box-tools -->
+                  </div>
+                  <div class="box-body">
+                    {{#with all_misc_items}}
+                      {{#if all_misc_items.count}}
+                          {{#each all_misc_items}}
+                            <div class="box box-solid bg-yellow">
+                              <div class="col-xs-12 col-md-8"><strong>{{subject}}</strong></div>
+                              <div class="col-xs-6 col-md-4"><strong>{{date}}</strong></div>
+                            </div>
+                          {{/each}}
+                      {{else}}
+                        There are currently no posts. Please check back later. Thank you!
+                      {{/if}}
+                    {{/with}}
+                  </div>
+                </div>
+              </div>
+
+              <div id="upcomingEventBox">
+                <!-- Box 3: Upcoming Events -->
+                <div class="box box-solid bg-green">
+                  <div class="box-header with-border">
+                    <h3 class="box-title"><strong>Upcoming Events</strong></h3>
+                    <div class="box-tools pull-right">
+                        <span class="label label-primary"><a href="{{pathFor route='calendar'}}">See more @ Calendar</a></span>
+                    </div><!-- /.box-tools -->
+                  </div>
+                  <div  id="collapse" class="box-body">
+                    {{#with all_event_items}}
+                      {{#if all_event_items.count}}
+                          {{#each all_event_items}}
+                            <div class="box box-solid bg-green">
+                              <div class="col-xs-12 col-md-8"><strong>{{title}}</strong></div>
+                              <div class="col-xs-6 col-md-4"><strong>{{start}}</strong></div>
+                            </div>
+                          {{/each}}
+                      {{else}}
+                        There are currently no events. Please check back later. Thank you!
+                      {{/if}}
+                    {{/with}}
+
+                  </div>
+                </div>
+              </div>
+
+          </section>
+
+      </div> <!-- /.box-default -->
+
+    </section> <!-- /.content -->
+  </div><!-- /.content-wrapper -->
+
+</template>

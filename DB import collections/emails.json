@@ -1,0 +1,3 @@
+{"_id":{"$oid":"596e1283fe20a52e6f09692a"},"email":"testerorbital@gmail.com","accType":"admin-user","userStatus":"staff"}
+{"_id":{"$oid":"596e12c5fe20a52e6f09692b"},"email":"e0053323@u.nus.edu","accType":"normal-user","userStatus":"student"}
+{"_id":{"$oid":"596e12d4fe20a52e6f09692c"},"email":"e0053029@u.nus.edu","accType":"normal-user","userStatus":"student"}

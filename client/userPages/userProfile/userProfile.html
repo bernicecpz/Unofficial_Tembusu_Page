@@ -1,0 +1,236 @@
+<template name ="userprofile">
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <section class="content-header">
+      <h1>
+        My User Profile
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="{{pathFor route='home'}}"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li class="active">User Profile</li>
+      </ol>
+    </section>
+
+    <section class="content">
+
+
+      <div class="box-default">
+          <!-- Main content -->
+            <section class="content">
+              <div id="list">
+                    <!-- Personal Information: Name (InputBox), Year of Study (Dropdown), House(Dropdown) -->
+                    <div class="box box-widget">
+                      <div class="container-fluid">
+                            <div class="box-header with-border">
+                              <div class="title-block">
+                                   <h3>About Me</h3>
+                              </div>
+                            </div>
+                            <form id="aboutMe-form">
+                                  <div class="box-body">
+                                      <table>
+                                        <tr>
+                                          <td><label for = "name">Name</label></td>
+
+                                          {{#if isEmpty getUserProfile}}
+                                            <!-- Safeguard against error in user creation, resulting in user profile not created successfully.-->
+                                            <td><input type="text" name="userName" id="userName" placeholder="Enter Your Name" value='New User Profile' required></td>
+                                          {{else}}
+                                            {{#with getUserProfile}}
+                                                <td><input type="text" name="userName" id="userName" placeholder="Enter Your Name" value='{{nameOfUser}}' required></td>
+                                            {{/with}}
+                                          {{/if}}
+                                        </tr>
+                                        <tr>
+                                          <td><label for = "year of study">Year of Study</label></td>
+                                          <td>
+                                              <select id="dropdown-yos" name="dropdown" required>
+                                                  {{#with getUserProfile}}
+                                                    <option disabled="disabled" selected="selected">{{yearOfStudy}}</option>
+                                                  {{/with}}
+
+                                                 <!--  <option disabled="disabled" selected="selected">Please Select</option> -->
+                                                  {{#each yearOfStudyOptions}}
+                                                    <option name="option" value="{{this}}">{{this}}</option>
+                                                  {{/each}}
+                                              </select>
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td><label for = "house">House</label></td>
+                                          <td>
+                                              <select id="dropdown-hse" name="dropdown" required>
+                                                  {{#with getUserProfile}}
+                                                    <option disabled="disabled" selected="selected">{{house}}</option>
+                                                  {{/with}}
+
+                                                  <!--  <option disabled="disabled" selected="selected">Please Select</option> -->
+                                                  {{#each houseOptions}}
+                                                    <option name="option" value="{{this}}">{{this}}</option>
+                                                  {{/each}}
+                                              </select>
+
+                                          </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div class="box-footer">
+                                  <button type="submit" class="btn btn-success pull-right">Update</button>
+                                </div>
+
+                        </form>
+                      </div>  <!-- /.row-block -->
+                    </div> <!-- /.box-block -->
+
+                    <!-- Change Password -->
+                    <div class="box box-widget">
+                      <div class="container-fluid">
+                            <div class="box-header with-border">
+                              <div class="title-block">
+                                   <h3>Change Password</h3>
+                              </div>
+                            </div>
+                            <form id="changePassword-form">
+                                <div class="box-body">
+                                  <table>
+                                    <tr>
+                                      <td><label for = "oldPassword">Enter Old Password</label></td>
+                                      <td><input type="password" name="oldPassword" id="oldPassword" placeholder="Old Password" required></td>
+                                    </tr>
+                                    <tr>
+                                      <td><label for = "newPassword">Enter New Password</label></td>
+                                      <td><input type="password"  name="npassword" id="npassword" placeholder="New Password" required></td>
+                                    </tr>
+                                    <tr>
+                                      <td><label for = "confirmNewPassword">Confirm New Password</label></td>
+                                      <td><input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm New Password" required></td>
+                                    </tr>
+                                </table>
+                              </div>
+
+                              <div class="box-footer">
+                                <button type="submit" class="btn btn-success pull-right">Change Password</button>
+                              </div>
+                        </form>
+                      </div>  <!-- /.row-block -->
+                    </div> <!-- /.box-block -->
+
+                    <!-- Need to add permission for this section -->
+                    <!-- My Announcements (Only for Admin-users, only can edit their own ) -->
+                    {{#if userHasAnnPermission 'announcements.insert' 'announcements.update' 'announcements.remove' }}
+                        <div class="box box-widget">
+                          <div class="container-fluid">
+                                <div class="box-header with-border">
+                                  <div class="title-block">
+                                       <h3>My Announcements</h3>
+                                  </div>
+                                </div>
+                                  <div class="box-body">
+
+                                    {{#if userHasAnnPermission 'announcements.update'}}
+                                      {{> modifyAnnouncementModal}}
+                                    {{/if}}
+
+                                    {{#with ann_items}}
+                                      {{#if ann_items.count}}
+                                          {{#each ann_items}}
+                                            <div class="box box-widget">
+                                              <div class="container-fluid">
+                                                    <div class="box-header with-border">
+                                                      <div class="title-block">
+                                        				           <strong>{{title}}</strong>
+                                                      </div>
+                                                      <div class="box-tools pull-right">
+                                                        <button class="btn btn-box-tool" name="editAnnouncement" id="editAnnouncement" value="{{_id}}"><i class="glyphicon glyphicon-pencil"></i></button>
+                                                        <button class="btn btn-box-tool"  name="removeAnnouncement" id="removeAnnouncement" value="{{_id}}"><i class="glyphicon glyphicon-remove"></i></button>
+                                                      </div><!-- /.box-tools -->
+                                                    </div>
+                                                    <div class="box-body">
+                                                        {{#autolink}} {{content}} {{/autolink}}
+                                                    </div>
+                                                    <div class="box-footer">
+                                                      <p class="date pull-right">Posted on {{date}}</p>
+                                                    </div>
+                                              </div>  <!-- /.row-block -->
+                                            </div> <!-- /.box-block -->
+                                          {{/each}}
+                                          {{else}}
+                                            You do not have make announcements previously. <a href="{{pathFor route='announcement'}}" class="add">Go add one now!</a>
+                                          {{/if}}
+                                      {{/with}}
+                                  </div>
+
+                                  {{#if isMoreThan ann_items.count 2}}
+                                    <div class="box-footer">
+                                      <button type="submit" class="btn btn-success pull-right" name="seeMoreAnn" id="seeMoreAnn">See More ... </button>
+                                    </div>
+                                  {{/if}}
+
+                          </div>  <!-- /.row-block -->
+                        </div> <!-- /.box-block -->
+
+                    {{/if}}
+
+                    <!-- My Misc Post (For all users, but only can edit their own) -->
+                    {{#if userHasMiscPermission 'miscPosts.insert' 'miscPosts.update' 'miscPosts.remove' }}
+                        <div class="box box-widget">
+                          <div class="container-fluid">
+                                <div class="box-header with-border">
+                                  <div class="title-block">
+                                       <h3>My Misc. Posts</h3>
+                                  </div>
+                                </div>
+                                  <div class="box-body">
+
+                                    {{#if userHasMiscPermission 'miscPosts.update'}}
+                                      {{> modifyMiscPostModal}}
+                                    {{/if}}
+
+                                    {{#with misc_items}}
+                                      {{#if misc_items.count}}
+                                          {{#each misc_items}}
+                                            <div class="box box-widget">
+                                              <div class="container-fluid">
+                                                    <div class="box-header with-border">
+                                                      <div class="title-block">
+                                        				           <strong>{{subject}}</strong>
+                                                      </div>
+                                                      <div class="box-tools pull-right">
+                                                        <button class="btn btn-box-tool" name="editMiscPost" id="editMiscPost" value="{{_id}}"><i class="glyphicon glyphicon-pencil"></i></button>
+                                                        <button class="btn btn-box-tool"  name="removeMiscPost" id="removeMiscPost" value="{{_id}}"><i class="glyphicon glyphicon-remove"></i></button>
+                                                      </div><!-- /.box-tools -->
+                                                    </div>
+                                                    <div class="box-body">
+                                                        {{#autolink}} {{content}} {{/autolink}}
+                                                    </div>
+                                                    <div class="box-footer">
+                                                      <p class="date pull-right">Posted on {{date}}</p>
+                                                    </div>
+                                              </div>  <!-- /.row-block -->
+                                            </div> <!-- /.box-block -->
+                                          {{/each}}
+                                          {{else}}
+                                            You have no posts. <a href="{{pathFor route='misc'}}" class="add">Go add one now!</a>
+                                          {{/if}}
+                                      {{/with}}
+                                  </div>
+
+                                  {{#if isMoreThan misc_items.count 2}}
+                                    <div class="box-footer">
+                                      <button type="submit" class="btn btn-success pull-right" name="seeMoreAnn" id="seeMoreMisc">See More ... </button>
+                                    </div>
+                                  {{/if}}
+
+                          </div>  <!-- /.row-block -->
+                        </div> <!-- /.box-block -->
+
+                    {{/if}}
+              </div>
+            </section>
+
+      </div> <!-- /.box-default -->
+
+    </section> <!-- /.content -->
+  </div><!-- /.content-wrapper -->
+</template>

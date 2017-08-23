@@ -1,0 +1,60 @@
+<template name="announcement">
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <section class="content-header">
+      <h1>
+        Anouncements
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="{{pathFor route='home'}}"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li class="active">Anouncements</li>
+      </ol>
+    </section>
+
+    <section class="content">
+
+      <div class="box-default">
+          <!-- Main content -->
+            <section class="content">
+              {{#if userHasPermission 'announcements.insert'}}
+                {{> addAnnouncementModal}}
+              {{/if}}
+
+              <div id="list">
+                {{#with ann_items}}
+                  {{#if ann_items.count}}
+                      {{#each ann_items}}
+                        <div class="box box-widget">
+                          <div class="container-fluid">
+                                <div class="box-header with-border">
+                                  <div class="title-block">
+                    				           <strong>{{title}}</strong>
+                                  </div>
+                                </div>
+                                <div class="box-body">
+                                    {{#autolink}} {{content}} {{/autolink}}
+                                </div>
+                                <div class="box-footer">
+                                  <p class="date pull-right">Posted on {{date}}</p>
+                                </div>
+                          </div>  <!-- /.row-block -->
+                        </div> <!-- /.box-block -->
+                      {{/each}}
+                  {{else}}
+                    There are currently no announcements. Please check again later. Thank you!
+                  {{/if}}
+                {{/with}}
+              </div>
+              <br />
+              {{#if userHasPermission 'announcements.insert'}}
+                <a href="#" id="add" class="btn btn-primary">Add New Announcement</a>
+              {{/if}}
+
+            </section>
+
+      </div> <!-- /.box-default -->
+
+    </section> <!-- /.content -->
+  </div><!-- /.content-wrapper -->
+
+</template>
